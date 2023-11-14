@@ -1,0 +1,26 @@
+main{
+    width: 50%;
+    margin: auto;
+    margin-top: 5rem;
+}
+
+button{
+    background-color: var(--primary-yellow);
+    color: white;
+    width: fit-content;
+    padding: 8px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+p{
+    margin-top: 2rem;
+    text-align: center;
+
+    span{
+        color: var(--primary-yellow);
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+

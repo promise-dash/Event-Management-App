@@ -1,0 +1,24 @@
+<section class="widgets">
+    <div class="top">
+        <h4>Popular Events</h4>
+
+        <div class="lists" *ngFor="let event of events">
+            <div>
+                <p class="title">{{event.title}}</p>
+                <p class="status">{{event.status}}</p>
+            </div>
+        </div>
+
+        <small>See More</small>
+    </div>
+
+    <div class="bottom">
+        <h5>Special Offer</h5>
+
+        <div>
+            <p>Free 50 Days Premium</p>
+            <small>2 Days left</small>
+            <button>Learn More</button>
+        </div>
+    </div>
+</section>

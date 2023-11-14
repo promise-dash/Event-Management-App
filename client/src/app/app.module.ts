@@ -1,0 +1,48 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DetailsComponent } from './pages/details/details.component';
+import { CreateComponent } from './pages/create/create.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CardComponent } from './components/card/card.component';
+import { WidgetsComponent } from './components/widgets/widgets.component';
+import { HttpClientModule } from "@angular/common/http";
+import { LoaderComponent } from './components/loader/loader.component';
+import {CloudinaryModule} from '@cloudinary/ng';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { EventsComponent } from './pages/events/events.component';
+import { EditComponent } from './pages/edit/edit.component';
+
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    DetailsComponent,
+    CreateComponent,
+    SidebarComponent,
+    CardComponent,
+    WidgetsComponent,
+    LoaderComponent,
+    EventsComponent,
+    EditComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    CloudinaryModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

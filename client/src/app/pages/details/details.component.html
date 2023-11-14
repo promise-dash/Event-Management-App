@@ -1,0 +1,43 @@
+<main>
+    <app-sidebar></app-sidebar>
+
+    <section class="event-details-container">
+        <div class="event-image">
+          <img src="{{event.image}}" alt="Event Image">
+        </div>
+
+        <div class="event-info-container">
+          <div class="organizer-info">
+            <p>{{event.creator.name}}</p>
+            <p>Email: {{event.creator.email}}</p>
+            <p>Phone: {{event.creator.phone}}</p>
+          </div>
+
+
+          <div class="event-date-location">
+            <p>Date: {{event.dateOfEvent}}</p>
+            <p>Time: {{event.time}}</p>
+            <p>Location: {{event.location}}</p>
+          </div>
+        </div>
+
+        <div class="event-body">
+            <div class="event-book">
+                <p>{{event.attendees.length}} people going</p>
+                <div class="price">
+                    <span>${{event.price}}</span>
+                    <button [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
+                      {{ event.attendees.includes(user.id) ? 'Booked' : 'Book Now' }}
+                  </button>
+                </div>
+            </div>
+
+            <div class="event-details">
+                <h2>{{event.eventName}}</h2>
+                <p>{{event.description}}</p>
+            </div>
+        </div>
+      </section>
+
+    <app-widgets></app-widgets>
+</main>

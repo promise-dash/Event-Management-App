@@ -44,3 +44,12 @@ C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\obj\Debug\net7.0\refint
 C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\obj\Debug\net7.0\server.pdb
 C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\obj\Debug\net7.0\server.genruntimeconfig.cache
 C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\obj\Debug\net7.0\ref\server.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\Users\PRDASH3\Desktop\Projects\Capstone\server\server\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll

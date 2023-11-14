@@ -9,6 +9,9 @@ namespace server.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; } = String.Empty;
 
+        [BsonElement("creator")]
+        public User Creator { get; set; } = new User();
+
         [BsonElement("eventName")]
         public string EventName { get; set; } = String.Empty;
         
@@ -17,19 +20,27 @@ namespace server.Models
         
         [BsonElement("category")]
         public string Category { get; set; } = String.Empty;
-        
+
         [BsonElement("dateOfEvent")]
-        public DateTime DateOfEvent { get; set; }
+        public string DateOfEvent { get; set; } = String.Empty;
+        
+        [BsonElement("time")]
+        public string Time { get; set; } = String.Empty;
 
         [BsonElement("location")]
         public string Location { get; set; } = String.Empty;
+        
+        [BsonElement("price")]
+        public float Price { get; set; } = float.MinValue;
 
         [BsonElement("attendees")]
-        public ObjectId[]? Attendees { get; set; }
-        
-        [BsonElement("feedbacks")]
-        public Feedback[]? Feedbacks { get; set; }
+        public List<string> Attendees { get; set; } = new List<string>();
 
+        [BsonElement("feedbacks")]
+        public List<Feedback> Feedbacks { get; set; } = new List<Feedback>();
+
+        [BsonElement("images")]
+        public string Image { get; set; } = String.Empty;
 
 
     }

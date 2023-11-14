@@ -5,14 +5,13 @@ namespace server.Models
 {
     public class Feedback
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string UserId { get; set; } = String.Empty;
+        [BsonElement("userid")]
+        public string? UserId { get; set; }
 
         [BsonElement("review")]
-        public string Review { get; set; } = String.Empty;
+        public string? Review { get; set; }
 
         [BsonElement("reply")]
-        public string Reply { get; set; } = String.Empty;
+        public string? Reply { get; set; }
     }
 }

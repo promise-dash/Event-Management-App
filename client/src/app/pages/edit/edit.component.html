@@ -1,0 +1,49 @@
+<main>
+    <app-sidebar></app-sidebar>
+  
+    <form class="row g-3" [formGroup]="editForm">
+      <h3 class="mb-3">Edit Event</h3>
+  
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Name</label>
+        <input type="text" formControlName="eventName" class="form-control" id="inputName" required>
+      </div>
+      <div class="col-md-6">
+        <label for="inputCategory" class="form-label">Category</label>
+        <select formControlName="category" class="form-select" id="inputCategory" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="music">Music</option>
+          <option value="music">Dance</option>
+          <option value="food">Food</option>
+          <option value="comedy">Comedy</option>
+          <option value="sports">Education</option>
+          <option value="sports">Sports</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="inputDate" class="form-label">Date</label>
+        <input type="date" formControlName="dateOfEvent" class="form-control" id="inputDate" required>
+      </div>
+      <div class="col-md-6">
+        <label for="inputLocation" class="form-label">Location</label>
+        <input type="text" formControlName="location" class="form-control" id="inputLocation" required>
+      </div>
+      <div class="col-md-12">
+        <label for="inputDescription" class="form-label">Description</label>
+        <textarea formControlName="description" class="form-control" id="inputDescription" rows="3" required></textarea>
+      </div>
+      <div class="col-md-6">
+        <label for="inputImage" class="form-label">Image Url</label>
+        <!-- <input type="file" formControlName="image" class="form-control" id="inputImage" required (change)="handleFileInput($event)"> -->
+        <input type="text" formControlName="image" class="form-control" id="inputImage" required>
+      </div>
+      <div class="col-md-6">
+        <label for="inputPrice" class="form-label">Price</label>
+        <input type="number" formControlName="price" class="form-control" id="inputPrice">
+      </div>
+
+      <div class="col-12">
+        <button (click)="handleEdit()">Save Changes</button>
+      </div>
+    </form>
+  </main>

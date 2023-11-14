@@ -1,0 +1,27 @@
+<main>
+    <app-sidebar></app-sidebar>
+
+    <section class="content">
+        <div class="topbar">
+            <form class="searchbar" [formGroup]="searchForm">
+                <i class="fa fa-search"></i>
+                <input type="search" placeholder="Search" formControlName="searchTerm">
+            </form>
+
+            <i class="fa fa-bell" style="font-size:20px"></i>
+        </div>
+
+        <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">
+            <app-loader></app-loader>
+            <app-loader></app-loader>
+            <app-loader></app-loader>
+        </div>
+        <div *ngIf="!loading" class="cards gap-4">
+            <div *ngFor="let event of searchedEvents">
+                <app-card [event]="event"></app-card>
+            </div>
+        </div>
+    </section>
+
+    <app-widgets></app-widgets>
+</main>

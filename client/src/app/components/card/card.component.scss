@@ -1,0 +1,85 @@
+.event-card {
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px 20px;
+    cursor: pointer;
+    
+    .image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      
+      img {
+        width: 100%;
+        height: 100px;
+        border-radius: 20px;
+      }
+    }
+    
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      small{
+        font-size: smaller;
+        color: var(--primary-yellow);
+      }
+      
+      .title {
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+      }
+      
+      .description {
+        font-size: 14px;
+        font-weight: 400;
+        padding-right: 5px;
+      }
+    }
+
+    .options{
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        small{
+            font-size: 10px;
+        }
+
+        p{
+            font-weight: bold;
+            font-size: 20px;
+            color:  var(--primary-yellow);
+        }
+      }
+
+}
+    .btns{
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor:auto;
+
+      i{
+        cursor: pointer;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 50%;
+      }:hover{
+        background-color: whitesmoke;
+      }
+      
+      button{
+        border: none;
+        outline: none;
+        padding: 5px 20px;
+        background-color: var(--primary-yellow);
+        color: white;
+        border-radius: 10px;
+      }
+    }

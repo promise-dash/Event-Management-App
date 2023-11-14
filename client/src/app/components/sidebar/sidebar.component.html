@@ -1,0 +1,31 @@
+<section class="sidebar">
+
+    <h2 routerLink="/">event<span>bee</span></h2>
+
+    <div class="links">
+        <div routerLink="">
+            <i class="fa fa-home"></i>
+            Home
+        </div>
+        <div *ngIf="user.role === 'Organizer' || user.role === 'Admin'" [routerLink]="['/events', user.id]">
+            Your Events
+        </div>
+        <div>
+            Tickets
+        </div>
+        <div>
+            More
+        </div>
+    </div>
+    <button *ngIf="user.role === 'Organizer' || user.role === 'Admin'" class="create-btn" routerLink="/create">
+        Create Event
+    </button>
+
+    <div class="logout-btn">
+        <button (click)="handleLogout()">
+            <i class="fa fa-sign-out" style="font-size:15px"></i>
+            <span>Logout</span>
+        </button>
+    </div>
+
+</section>
