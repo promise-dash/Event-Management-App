@@ -53,11 +53,12 @@ export class CreateComponent {
       this.eventForm.value.image = this.base64Image;
       this.eventForm.value.creator = this.user;
       console.log(this.eventForm.value);
+
       this.api.createEvent(this.eventForm.value).subscribe((res: any) => {
         console.log(res);
+        this.eventForm.reset();
+        this.router.navigate(['/']);
       });
-      this.eventForm.reset();
-      this.router.navigate(['/']);
     }
     else{
       alert('Fill all the fields');

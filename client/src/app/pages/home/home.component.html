@@ -11,13 +11,33 @@
             <i class="fa fa-bell" style="font-size:20px"></i>
         </div>
 
+        <div class="filters">
+            <label>Location:</label>
+            <select [(ngModel)]="locationFilter" (ngModelChange)="filterEvents()">
+            <option value="all">All</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Pune">Pune</option>
+            </select>
+
+            <div class="price-range">
+            <label>Price:</label>
+            <span class="price-value">{{ priceFilter.min }}</span>
+            <input id ="range" type="range" [(ngModel)]="priceFilter.value" (ngModelChange)="filterEvents()">
+            <span class="price-value">{{ priceFilter.max }}</span>
+            </div>
+
+            <label>Date:</label>
+            <input type="date" [(ngModel)]="dateFilter" (ngModelChange)="filterEvents()">
+        </div>
+
         <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">
             <app-loader></app-loader>
             <app-loader></app-loader>
             <app-loader></app-loader>
         </div>
         <div *ngIf="!loading" class="cards gap-4">
-            <div *ngFor="let event of searchedEvents">
+            <div *ngFor="let event of filteredEvents">
                 <app-card [event]="event"></app-card>
             </div>
         </div>

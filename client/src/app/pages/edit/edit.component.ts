@@ -15,6 +15,7 @@ export class EditComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService){
     let id = this.activeRoute.snapshot.params['id'];
+
     this.api.fetchEventById(id).subscribe((res: any) => {
       this.event = res;
       console.log(res);
@@ -46,11 +47,17 @@ export class EditComponent implements OnInit {
   }
 
   handleEdit(){
-    console.log('saved');
-    console.log(this.editForm.value);
-
-    // this.api.updateEvent(this.event.id, this.event.creator.id, this.editForm.value).subscribe((res: any)=>{
-    //   console.log(res);
-    // })
+    this.event.eventName=this.editForm.value['eventName'];
+    this.event.description=this.editForm.value['description'];
+    this.event.category=this.editForm.value['category'];
+    this.event.dateOfEvent=this.editForm.value['dateOfEvent'];
+    this.event.location=this.editForm.value['location'];
+    this.event.price=this.editForm.value['price'];
+    this.event.image=this.editForm.value['image'];
+  
+    this.api.updateEvent(this.event.id, this.event).subscribe((res: any)=>{
+      console.log(res);
+      
+    })
   }
 }

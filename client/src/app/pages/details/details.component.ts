@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-details',
@@ -24,9 +25,19 @@ export class DetailsComponent {
   bookEvent(){
     this.api.bookAnEvent(this.event.id).subscribe((res: any) => {
       console.log(res);
+      // this.sendConfirmation();
+      alert('You have succeesfully booked the event');
+      this.router.navigate(['/']);
     });
-    alert('You have succeesfully booked the event');
-    this.router.navigate(['/']);
   }
 
+  async sendConfirmation(){
+    emailjs.init('YHVQurT2eDVsLtv9w');
+    let response = await emailjs.send("service_zhyaqqn","template_ipwr69b",{
+      from_name: "EventBee",
+      to_name: this.user.name,
+      subject: "Event Booking Confirmation",
+      message: `You have successfully booked the event: ${this.event.eventName}`,
+      });
+    }
 }

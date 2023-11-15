@@ -15,9 +15,13 @@ import { WidgetsComponent } from './components/widgets/widgets.component';
 import { HttpClientModule } from "@angular/common/http";
 import { LoaderComponent } from './components/loader/loader.component';
 import {CloudinaryModule} from '@cloudinary/ng';
-import { Cloudinary } from '@cloudinary/url-gen';
 import { EventsComponent } from './pages/events/events.component';
 import { EditComponent } from './pages/edit/edit.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewComponent } from './components/view/view.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +37,8 @@ import { EditComponent } from './pages/edit/edit.component';
     WidgetsComponent,
     LoaderComponent,
     EventsComponent,
-    EditComponent
+    EditComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,10 @@ import { EditComponent } from './pages/edit/edit.component';
     ReactiveFormsModule,
     HttpClientModule,
     CloudinaryModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatTableModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

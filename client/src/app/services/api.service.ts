@@ -34,6 +34,10 @@ export class ApiService {
     return this.http.post<any>(`${this.userBaseUrl}/login`, user);
   }
 
+  fetchUserById(userId: string): Observable<any>{
+    return this.http.get<any>(`${this.userBaseUrl}/${userId}`);
+  }
+
 
   fetchEvents():Observable<any> {
     return this.http.get<any[]>(`${this.eventBaseUrl}`);
@@ -56,17 +60,8 @@ export class ApiService {
     return this.http.get<any[]>(`${this.eventBaseUrl}/user/${userId}`);
   }
 
-  updateEvent(eventId: string, creatorId: string, event: any):Observable<any>{
-    console.log('put request sent');
-    const updatedEvent = {
-      ...event,
-      // creator: {
-      //   id: creatorId
-      // },
-      attendees: [],
-      feedbacks: []
-    }
-    return this.http.put<any>(`${this.eventBaseUrl}/${eventId}`, updatedEvent);
+  updateEvent(eventId: string, event: any):Observable<any>{
+    return this.http.put<any>(`${this.eventBaseUrl}/${eventId}`, event);
   }
 
   deleteEvent(id: string): Observable<any>{

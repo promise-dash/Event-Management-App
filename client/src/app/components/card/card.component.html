@@ -22,36 +22,20 @@
 
   <div *ngIf="userEvents">
     <div class="btns">
-      <a style="color: black; border-radius: 50%;" data-bs-toggle="collapse" [attr.href]="'#collapseExample-' + event.id" role="button" [attr.aria-controls]="'collapseExample-' + event.id" aria-expanded="false" (click)="$event.stopPropagation();">
+      <a style="color: black; border-radius: 50%;" data-bs-toggle="collapse" [attr.href]="'#collapseExample-' + event.id" role="button" [attr.aria-controls]="'collapseExample-' + event.id" aria-expanded="false" (click)="showAttendees(event.id); $event.stopPropagation();">
         <i class="fa fa-eye"></i>
       </a>
       <i class="far fa-edit" (click)="handleEdit(event.id); $event.stopPropagation();" [routerLink]="'/edit/' + event.id"></i>
       <i class="far fa-trash-alt" (click)="handleDelete(event.id); $event.stopPropagation();"></i>
     </div>
 
-    <div [attr.id]="'collapseExample-' + event.id" class="collapse">
+    <!-- <div [attr.id]="'collapseExample-' + event.id" class="collapse">
       <div class="card card-body">
         <h5>Attendees</h5>
           <ul *ngFor="let attendee of event.attendees">
               <li style="font-size: 10px;">{{ attendee }}</li>
           </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
-
-
-    <!-- <div *ngIf="userEvents" class="btns">
-      <i class="fa fa-eye" data-bs-target="#collapseExample" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample" (click)="toggleAttendees(); $event.stopPropagation();"></i>
-      <i class="far fa-edit" (click)="handleEdit(event.id); $event.stopPropagation();" [routerLink]="'/edit/' + event.id"></i>
-      <i class="far fa-trash-alt" (click)="handleDelete(event.id); $event.stopPropagation();"></i>
-    </div>
-
-    <div *ngIf="userEvents && showAttendees" class="collapse" id="collapseExample" data-bs-parent=".event-card">
-      <div class="card card-body">
-          <h5>Attendees</h5>
-          <ul *ngFor="let attendee of event.attendees">
-              <li>{{ attendee }}</li>
-          </ul>
-      </div>
-    </div> -->
