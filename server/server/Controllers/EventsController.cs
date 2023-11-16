@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Amazon.Util;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using server.Models;
 using server.Services;
@@ -110,8 +112,16 @@ namespace server.Controllers
         [HttpGet("user/{userId}")]
         public IActionResult AddAttendee(string userId)
         {
-            var events = EventService.GetEventByUserId(userId);
+            var events = EventService.GetEventsByUserId(userId);
             return Ok(events);
         }
+
+        [HttpGet("booked/{userId}")]
+        public async Task<ActionResult<List<Event>>> GetEventsBookedByUser(string userId)
+        {
+            var events = await EventService.GetEventsBookedByUser(userId);
+            return events;
+        }
+
     }
 }

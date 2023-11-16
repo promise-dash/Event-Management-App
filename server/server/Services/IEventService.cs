@@ -11,6 +11,7 @@ namespace server.Services
         void Delete(string id);
         void AddAttendee(string eventId, string userId);
         void AddFeedback(string eventId, Feedback feedback);
-        List<Event> GetEventByUserId(string userId);
+        List<Event> GetEventsByUserId(string userId);
+        Task<List<Event>> GetEventsBookedByUser(string userId);
     }
 }

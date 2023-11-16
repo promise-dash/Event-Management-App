@@ -13,10 +13,9 @@ export class AuthGuard implements CanActivate {
     }
   
     checkUserLoggedIn(url: string): boolean | UrlTree {
-      if (localStorage.getItem('user')) { // Check for user in local storage
-        return true; // Allow access to the route
+      if (localStorage.getItem('user')) {
+        return true;
       } else {
-        // If not, redirect to the login page with the returnUrl parameter
         return this.router.createUrlTree(['/login'], { queryParams: { returnUrl: url } });
       }
     }

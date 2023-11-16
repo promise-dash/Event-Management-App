@@ -47,13 +47,9 @@ namespace server.Services
         {
             var filter = Builders<Event>.Filter.Eq(e => e.Id, eventId);
             var objectId = new ObjectId(userId);
-            var eventObj = _events.Find(filter).FirstOrDefault();
+            var update = Builders<Event>.Update.Push(e => e.Attendees, objectId.ToString());
 
-            if (!eventObj.Attendees.Contains(objectId.ToString()))
-            {
-                var update = Builders<Event>.Update.Push(e => e.Attendees, objectId.ToString());
-                _events.UpdateOne(filter, update);
-            }
+            _events.UpdateOne(filter, update);
         }
 
         public void AddFeedback(string eventId, Feedback feedback)
@@ -64,10 +60,21 @@ namespace server.Services
             _events.UpdateOne(filter, update);
         }
 
-        public List<Event> GetEventByUserId(string userId)
+
+        public List<Event> GetEventsByUserId(string userId)
         {
             var filter = Builders<Event>.Filter.Eq("creator._id", new ObjectId(userId));
             return _events.Find(filter).ToList();
+        }
+
+        public async Task<List<Event>> GetEventsBookedByUser(string userId)
+        {
+            var filter = Builders<Event>.Filter.ElemMatch(
+                e => e.Attendees,
+                a => a == userId
+            );
+            var events = await _events.FindAsync(filter);
+            return await events.ToListAsync();
         }
     }
 }

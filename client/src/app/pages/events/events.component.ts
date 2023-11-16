@@ -12,9 +12,20 @@ export class EventsComponent implements OnInit {
   userEvents: Array<any> = [];
   loading: boolean = true;
 
-  constructor(private api: ApiService, private activeRoute: ActivatedRoute){}
+  constructor(private api: ApiService, private activeRoute: ActivatedRoute){
+    api.mySubject.subscribe((res)=>{
+      if(res)
+      {
+        this.getEvents();
+      }
+    })
+  }
 
   ngOnInit(): void {
+    this.getEvents();
+  }
+
+  getEvents(){
     this.api.fetchEventsOfUser(this.activeRoute.snapshot.params['id']).subscribe((res: any) => {
       console.log(res);
       this.userEvents = res;

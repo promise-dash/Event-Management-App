@@ -1,0 +1,25 @@
+<main>
+    <app-sidebar></app-sidebar>
+
+    <section class="content">
+        <div class="topbar">
+           <h4>Booked Events</h4>
+
+            <i class="fa fa-bell" style="font-size:20px"></i>
+        </div>
+
+        <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">
+            <app-loader></app-loader>
+            <app-loader></app-loader>
+            <app-loader></app-loader>
+        </div>
+        <div *ngIf="!loading && bookedEvents.length == 0">
+            <p class="mt-5">You have not booked any event yet</p>
+        </div>
+        <div *ngIf="!loading && bookedEvents.length >= 0" class="cards gap-4">
+            <div *ngFor="let event of bookedEvents">
+                <app-card [event]="event" [userEvents]="true"></app-card>
+            </div>
+        </div>
+    </section>
+</main>

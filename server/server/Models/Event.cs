@@ -42,6 +42,5 @@ namespace server.Models
         [BsonElement("images")]
         public string Image { get; set; } = String.Empty;
 
-
     }
 }

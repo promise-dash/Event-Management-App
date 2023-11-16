@@ -13,16 +13,23 @@ export class CardComponent {
 
   @Input() event: any;
   @Input() userEvents: boolean;
+  user: any;
 
-  constructor(private api: ApiService, private router: Router, private dialog: MatDialog){}
+  constructor(private api: ApiService, private router: Router, private dialog: MatDialog){
+    this.user = JSON.parse(localStorage.getItem('user')!);
+  }
 
   handleEdit(id: string){
     console.log('edit');
   }
+
   handleDelete(id: string){
     console.log('delete');
     this.api.deleteEvent(id).subscribe((res: any) => {
-      console.log(res);
+    
+    this.api.mySubject.next(true);
+    },(error)=>{
+      this.api.mySubject.next(true);
     });
   }
 

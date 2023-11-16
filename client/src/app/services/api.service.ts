@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from "rxjs";
+import {Observable, Subject } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ export class ApiService {
 
   user: any;
   isUserLoggedIn: boolean = false;
+
+  mySubject = new Subject<boolean>;
 
   userBaseUrl = "http://localhost:5263/api/Users";
   eventBaseUrl = "http://localhost:5263/api/Events";

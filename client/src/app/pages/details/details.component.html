@@ -8,6 +8,7 @@
 
         <div class="event-info-container">
           <div class="organizer-info">
+            <h3>Organizer Details</h3>
             <p>{{event.creator.name}}</p>
             <p>Email: {{event.creator.email}}</p>
             <p>Phone: {{event.creator.phone}}</p>
@@ -15,6 +16,7 @@
 
 
           <div class="event-date-location">
+            <h3>Venue Details</h3>
             <p>Date: {{event.dateOfEvent}}</p>
             <p>Time: {{event.time}}</p>
             <p>Location: {{event.location}}</p>
@@ -26,7 +28,7 @@
                 <p>{{event.attendees.length}} people going</p>
                 <div class="price">
                     <span>${{event.price}}</span>
-                    <button [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
+                    <button id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
                       {{ event.attendees.includes(user.id) ? 'Booked' : 'Book Now' }}
                   </button>
                 </div>
