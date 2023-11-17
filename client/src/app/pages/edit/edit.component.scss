@@ -4,14 +4,22 @@ main{
 }
 
 form{
-    width: 100%;
+    width: 70%;
+    margin: auto;
+
+    h3{
+        font-family: 'Poppins', sans-serif;
+    }
 }
 
 button{
     background-color: var(--primary-yellow);
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border: none;
     outline: none;
     border-radius: 10px;
+    &:hover{
+        background-color: var(--primary-yellow);
+    }
 }

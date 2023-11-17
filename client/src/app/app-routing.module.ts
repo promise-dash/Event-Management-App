@@ -9,6 +9,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { AuthGuard } from './guards/auth.guard';
 import { BookedComponent } from './pages/booked/booked.component';
+import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
   {path: "login", component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: "events/:id", component: EventsComponent, canActivate: [AuthGuard]},
   {path: "edit/:id", component: EditComponent, canActivate: [AuthGuard]},
   {path: "booked/:userId", component: BookedComponent, canActivate: [AuthGuard]},
+  {path: "users", component: UsersComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

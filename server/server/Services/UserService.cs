@@ -36,7 +36,8 @@ namespace server.Services
         public void Update(string id, User user)
         {
             user.Id = id; 
-            
+            var existingUser = _users.Find(user => user.Id == id).FirstOrDefault();
+            user.Password = existingUser.Password;
             _users.ReplaceOne(u => u.Id == id, user);
         }
 

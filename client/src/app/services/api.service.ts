@@ -27,6 +27,16 @@ export class ApiService {
     }
   }
 
+  getUserFromLocalStorage(){
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      this.user = JSON.parse(userString);
+      console.log(this.user);
+    } else {
+      console.log('User is not logged in.');
+    }
+  }
+
   // Authentication
   registerUser(user: any): Observable<any>{
     return this.http.post<any>(`${this.userBaseUrl}/register`, user);
@@ -36,10 +46,22 @@ export class ApiService {
     return this.http.post<any>(`${this.userBaseUrl}/login`, user);
   }
 
+  //User endpoints
+  
+  fetchAllUsers(): Observable<any>{
+    return this.http.get<any>(`${this.userBaseUrl}`);
+  }
+
   fetchUserById(userId: string): Observable<any>{
     return this.http.get<any>(`${this.userBaseUrl}/${userId}`);
   }
 
+  deleteUser(id: string){
+    return this.http.delete<any>(`${this.userBaseUrl}/${id}`);
+  }
+
+
+  //Event endpoints
 
   fetchEvents():Observable<any> {
     return this.http.get<any[]>(`${this.eventBaseUrl}`);

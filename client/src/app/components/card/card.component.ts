@@ -1,7 +1,7 @@
-import { Component, Input, Inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ViewComponent } from '../view/view.component';
 
 @Component({
@@ -19,9 +19,6 @@ export class CardComponent {
     this.user = JSON.parse(localStorage.getItem('user')!);
   }
 
-  handleEdit(id: string){
-    console.log('edit');
-  }
 
   handleDelete(id: string){
     console.log('delete');

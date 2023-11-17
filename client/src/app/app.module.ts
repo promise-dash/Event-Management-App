@@ -24,6 +24,7 @@ import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { BookedComponent } from './pages/booked/booked.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { UsersComponent } from './pages/users/users.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { QRCodeModule } from 'angularx-qrcode';
     EditComponent,
     ViewComponent,
     BookedComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

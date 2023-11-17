@@ -1,22 +1,26 @@
 <main>
     <app-sidebar></app-sidebar>
 
-    <section class="event-details-container">
+    <div *ngIf="loading" class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <section *ngIf="!loading" class="event-details-container">
         <div class="event-image">
           <img src="{{event.image}}" alt="Event Image">
         </div>
 
         <div class="event-info-container">
           <div class="organizer-info">
-            <h3>Organizer Details</h3>
-            <p>{{event.creator.name}}</p>
+            <h5>Organizer Details</h5>
+            <p>Name: {{event.creator.name}}</p>
             <p>Email: {{event.creator.email}}</p>
             <p>Phone: {{event.creator.phone}}</p>
           </div>
 
 
           <div class="event-date-location">
-            <h3>Venue Details</h3>
+            <h5>Venue Details</h5>
             <p>Date: {{event.dateOfEvent}}</p>
             <p>Time: {{event.time}}</p>
             <p>Location: {{event.location}}</p>
@@ -28,7 +32,7 @@
                 <p>{{event.attendees.length}} people going</p>
                 <div class="price">
                     <span>${{event.price}}</span>
-                    <button id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
+                    <button *ngIf="user.role == 'Customer'" id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
                       {{ event.attendees.includes(user.id) ? 'Booked' : 'Book Now' }}
                   </button>
                 </div>

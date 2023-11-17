@@ -12,8 +12,14 @@ export class SidebarComponent {
   user: any
 
   constructor(private api: ApiService, private router: Router){
-    this.user = this.api.user;
+    this.api.getUserFromLocalStorage();
   } 
+
+  ngOnInit(){
+    this.user = this.api.user;
+  }
+
+  
 
   handleLogout(){
     localStorage.removeItem('user');

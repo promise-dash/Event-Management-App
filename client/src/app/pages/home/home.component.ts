@@ -30,8 +30,7 @@ export class HomeComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
-    console.log("Inside init");
+    this.api.getUserFromLocalStorage();
     
     this.api.fetchEvents().subscribe((res: any) => {
       console.log("Inside fetch");

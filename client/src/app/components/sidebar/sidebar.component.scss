@@ -24,13 +24,13 @@
         gap: 5px;
 
         div{
-            padding: 7px 20px;
+            padding: 10px 20px;
             border-radius: 20px;
             font-weight: 500;
             cursor: pointer;
             display: flex;
             gap: 10px;
-
+            font-size: 1rem;
 
             i{
                 font-size: 20px;
@@ -66,4 +66,16 @@
         }
     }
 
+}
+
+.user{
+    button{
+        background-color: whitesmoke;
+        color: black;
+        width: 100%;
+    }
+    button:hover{
+        background-color: var(--primary-yellow);
+        color: white;
+    }
 }

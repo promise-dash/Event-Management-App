@@ -11,7 +11,12 @@
 
   <div class="options">
       <div class="icons">
-          <i class="fa fa-bookmark-o" style="font-size:20px"></i>
+        <i *ngIf="event.category == 'music'" class="fa-solid fa-music"></i>
+        <i *ngIf="event.category == 'sports'" class="fa-solid fa-dice"></i>
+        <i *ngIf="event.category == 'education'" class="fa-solid fa-graduation-cap"></i>
+        <i *ngIf="event.category == 'dance'" class="fa-solid fa-hand-peace"></i>
+        <i *ngIf="event.category == 'food'" class="fa-solid fa-pizza-slice"></i>
+        <i *ngIf="event.category == 'comedy'" class="fa-solid fa-face-grin-squint-tears"></i>
       </div>
 
       <div class="price">
@@ -23,10 +28,10 @@
   <div *ngIf="(user.role === 'Admin' || user.role === 'Organizer') && userEvents">
     <div class="btns">
       <a style="color: black; border-radius: 50%;" data-bs-toggle="collapse" [attr.href]="'#collapseExample-' + event.id" role="button" [attr.aria-controls]="'collapseExample-' + event.id" aria-expanded="false" (click)="showAttendees(event.id); $event.stopPropagation();">
-        <i class="fa fa-eye"></i>
+        <i class="fa-solid fa-eye"></i>
       </a>
-      <i class="far fa-edit" (click)="handleEdit(event.id); $event.stopPropagation();" [routerLink]="'/edit/' + event.id"></i>
-      <i class="far fa-trash-alt" (click)="handleDelete(event.id); $event.stopPropagation();"></i>
+      <i class="fa-solid fa-pen-to-square" (click)="$event.stopPropagation();" [routerLink]="'/edit/' + event.id"></i>
+      <i class="fa-solid fa-trash-can" (click)="handleDelete(event.id); $event.stopPropagation();"></i>
     </div>
   </div>
 </div>

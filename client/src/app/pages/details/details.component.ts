@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import emailjs from '@emailjs/browser';
 
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -12,13 +13,14 @@ export class DetailsComponent {
 
   event: any;
   user: any;
+  loading: boolean = true;
   
   constructor(private api: ApiService, private route: ActivatedRoute, private router: Router){
     this.user = api.user;
     let id = route.snapshot.params['id'];
     this.api.fetchEventById(id).subscribe((res: any) => {
       this.event = res;
-      console.log(res);
+      this.loading = false;
     })
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class EditComponent implements OnInit {
   editForm: FormGroup;
   event: any;
 
-  constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService){
+  constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private router: Router){
     let id = this.activeRoute.snapshot.params['id'];
 
     this.api.fetchEventById(id).subscribe((res: any) => {
@@ -56,8 +56,7 @@ export class EditComponent implements OnInit {
     this.event.image=this.editForm.value['image'];
   
     this.api.updateEvent(this.event.id, this.event).subscribe((res: any)=>{
-      console.log(res);
-      
-    })
+      this.router.navigate(['/']);
+    });
   }
 }
