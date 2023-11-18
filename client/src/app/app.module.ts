@@ -23,8 +23,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { BookedComponent } from './pages/booked/booked.component';
-import { QRCodeModule } from 'angularx-qrcode';
 import { UsersComponent } from './pages/users/users.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 
 
 @NgModule({
@@ -44,6 +44,7 @@ import { UsersComponent } from './pages/users/users.component';
     ViewComponent,
     BookedComponent,
     UsersComponent,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,6 @@ import { UsersComponent } from './pages/users/users.component';
     MatDialogModule,
     MatTableModule,
     FormsModule,
-    QRCodeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

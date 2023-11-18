@@ -11,7 +11,7 @@
             <i class="fa-regular fa-calendar-check"></i>
             Your Events
         </div>
-        <div [routerLink]="['/booked', user.id]">
+        <div *ngIf="user.role === 'Customer'" [routerLink]="['/booked', user.id]">
             <i class="fa-solid fa-ticket"></i>
             Tickets
         </div>

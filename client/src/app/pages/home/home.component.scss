@@ -51,3 +51,67 @@ section{
     justify-content: space-between;
     margin-top: 1rem;
 }
+
+input[type="range"] {
+    appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #ddd;
+    outline: none;
+    // padding: 10px;
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background-color: var(--primary-yellow);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    &::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background-color: var(--seconday-yellow);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+
+  select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    outline: none;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #ffffff;
+    }
+  
+    option {
+      background-color: #fff;
+      color: #000;
+    }&:hover{
+        background-color: var(--primary-yellow);
+    }
+  }
+
+  .filter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .r{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  input[type="date"]{
+    padding: 5px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid rgb(192, 192, 192);
+  }

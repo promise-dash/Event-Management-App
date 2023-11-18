@@ -34,4 +34,8 @@
       <i class="fa-solid fa-trash-can" (click)="handleDelete(event.id); $event.stopPropagation();"></i>
     </div>
   </div>
+
+  <div *ngIf="user.role === 'Customer' && userEvents" class="feedback-btn">
+    <i (click)="openFeedbackForm(event.id); $event.stopPropagation();" class="fa-solid fa-comment-dots"></i>
+  </div>
 </div>

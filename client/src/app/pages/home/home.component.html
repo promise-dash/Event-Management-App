@@ -7,28 +7,33 @@
                 <i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i>
                 <input type="search" placeholder="Search" formControlName="searchTerm">
             </form>
-
-            <i class="fa-solid fa-bell" style="font-size: 20px;"></i>
+            <i class="fa-solid fa-bell"></i>
         </div>
 
         <div class="filters">
-            <label>Location:</label>
-            <select [(ngModel)]="locationFilter" (ngModelChange)="filterEvents()">
-            <option value="all">All</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Pune">Pune</option>
-            </select>
-
-            <div class="price-range">
-            <label>Price:</label>
-            <span class="price-value">{{ priceFilter.min }}</span>
-            <input id ="range" type="range" [(ngModel)]="priceFilter.value" (ngModelChange)="filterEvents()">
-            <span class="price-value">{{ priceFilter.max }}</span>
+            <div class="filter">
+                <label>Location</label>
+                <select [(ngModel)]="locationFilter" (ngModelChange)="filterEvents()">
+                <option value="all">All</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+                </select>
             </div>
 
-            <label>Date:</label>
-            <input type="date" [(ngModel)]="dateFilter" (ngModelChange)="filterEvents()">
+            <div class="filter">
+                <label>Price</label>
+                <div class="r">
+                    <span class="price-value">{{ priceFilter.min }}</span>
+                    <input id ="range" type="range" [(ngModel)]="priceFilter.value" (ngModelChange)="filterEvents()">
+                    <span class="price-value">{{ priceFilter.max }}</span>
+                </div>
+            </div>
+
+            <div class="filter">
+                <label>Date</label>
+                <input type="date" [(ngModel)]="dateFilter" (ngModelChange)="filterEvents()">
+            </div>
         </div>
 
         <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">

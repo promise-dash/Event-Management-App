@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder } from "@angular/forms";
+import { theme } from '@cloudinary/url-gen/actions/effect';
 
 @Component({
   selector: 'app-home',
@@ -21,9 +22,9 @@ export class HomeComponent implements OnInit {
   priceFilter = { min: 0, max: 100, value: 50 };
   dateFilter = '';
 
-  constructor(private api: ApiService, private fb: FormBuilder){
-    console.log(this.filteredEvents);
+  theme: string = '';
 
+  constructor(private api: ApiService, private fb: FormBuilder){
     this.searchForm = this.fb.group({
       searchTerm: ''
     });
@@ -63,5 +64,14 @@ export class HomeComponent implements OnInit {
       
       return true;
     });
+  }
+
+  changeTheme(){
+    if(this.api.theme === 'light'){
+      this.api.theme = 'dark';
+    }
+    else{
+      this.api.theme = 'light';
+    }
   }
 }

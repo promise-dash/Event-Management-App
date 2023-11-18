@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ViewComponent } from '../view/view.component';
+import { FeedbackComponent } from '../feedback/feedback.component';
 
 @Component({
   selector: 'app-card',
@@ -34,6 +35,12 @@ export class CardComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { eventId: eventid };
     this.dialog.open(ViewComponent, dialogConfig);
+  }
+
+  openFeedbackForm(eventId: string){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { eventId:  eventId};
+    this.dialog.open(FeedbackComponent, dialogConfig);
   }
 
 }

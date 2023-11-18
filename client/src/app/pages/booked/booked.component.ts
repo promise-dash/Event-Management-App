@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -7,14 +7,12 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './booked.component.html',
   styleUrls: ['./booked.component.scss']
 })
-export class BookedComponent {
+export class BookedComponent implements OnInit  {
 
   bookedEvents: Array<any> = [];
   loading: boolean = true;
 
-  constructor(private api: ApiService, private activeRoute: ActivatedRoute){}
-
-  ngOnInit(): void {
+  constructor(private api: ApiService, private activeRoute: ActivatedRoute){
     this.api.fetchEvents()
     .subscribe((res: any[]) => {
       console.log(res);
@@ -22,5 +20,15 @@ export class BookedComponent {
       this.loading = false;
       console.log(this.bookedEvents);
     });
+  }
+
+  ngOnInit(): void {
+    // this.api.fetchEvents()
+    // .subscribe((res: any[]) => {
+    //   console.log(res);
+    //   this.bookedEvents = res.filter(event => event.attendees.includes(this.activeRoute.snapshot.params['userId']));
+    //   this.loading = false;
+    //   console.log(this.bookedEvents);
+    // });
   }
 }

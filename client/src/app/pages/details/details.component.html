@@ -43,6 +43,15 @@
                 <p>{{event.description}}</p>
             </div>
         </div>
+
+        <div *ngIf="event.feedbacks.length > 0" class="comments">
+          <h5>Reviews</h5>
+          <hr>
+
+          <div *ngFor="let feedback of event.feedbacks" class="reviews">
+            <p>{{feedback.review}}</p>
+          </div>
+        </div>
       </section>
 
     <app-widgets></app-widgets>
