@@ -27,7 +27,7 @@
 
   <div *ngIf="(user.role === 'Admin' || user.role === 'Organizer') && userEvents">
     <div class="btns">
-      <a style="color: black; border-radius: 50%;" data-bs-toggle="collapse" [attr.href]="'#collapseExample-' + event.id" role="button" [attr.aria-controls]="'collapseExample-' + event.id" aria-expanded="false" (click)="showAttendees(event.id); $event.stopPropagation();">
+      <a style="color: black; border-radius: 50%;" (click)="showAttendees(event.id); $event.stopPropagation();">
         <i class="fa-solid fa-eye"></i>
       </a>
       <i class="fa-solid fa-pen-to-square" (click)="$event.stopPropagation();" [routerLink]="'/edit/' + event.id"></i>

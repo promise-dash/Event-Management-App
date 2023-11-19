@@ -32,6 +32,7 @@ export class CardComponent {
   }
 
   showAttendees(eventid: string){
+    console.log('clicked');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { eventId: eventid };
     this.dialog.open(ViewComponent, dialogConfig);

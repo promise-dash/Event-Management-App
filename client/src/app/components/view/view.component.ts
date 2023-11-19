@@ -14,7 +14,9 @@ export class ViewComponent implements OnInit {
   event: any;
   attendees: Array<any> = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService) {
+    console.log('view component');
+  }
 
   ngOnInit(): void {
     this.api.fetchEventById(this.data.eventId).subscribe((res: any) => {

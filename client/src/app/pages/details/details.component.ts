@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
+// import * as nodemailer from 'nodemailer';
 
 declare var Razorpay: any;
 
@@ -33,17 +34,6 @@ export class DetailsComponent {
       this.payNow();
     });
   }
-
-  async sendConfirmation(){
-    emailjs.init('YHVQurT2eDVsLtv9w');
-    let response = await emailjs.send("service_zhyaqqn","template_ipwr69b",{
-      from_name: "EventBee",
-      to_name: this.user.name,
-      subject: "Event Booking Confirmation",
-      message: `You have successfully booked the event: ${this.event.eventName}`,
-      });
-  }
-
 
   //payment integration
   payNow() {
@@ -79,6 +69,32 @@ export class DetailsComponent {
 
     Razorpay.open(RozarpayOptions,successCallback, failureCallback);
   }
+
+  // sendEmail() {
+  //   const message = `Your booking is confirmed for ${this.event.eventName}`;
+
+  //   let transporter: nodemailer.Transporter = nodemailer.createTransport({
+  //     service: 'gmail',
+  //     auth: {
+  //       user: 'promisedash79@gmail.com',
+  //       pass: 'pd20010716.'
+  //     }
+  //   });
+
+  //   let mailOptions: nodemailer.SendMailOptions = {
+  //     from: 'YOUR_EMAIL',
+  //     to: this.user.email,
+  //     subject: 'Booking Confirmation',
+  //     text: message
+  //   };
+
+  //   transporter.sendMail(mailOptions, (error, info) => {
+  //     if (error) {
+  //       return console.log(error);
+  //     }
+  //     console.log('Message sent: %s', info.messageId);
+  //   });
+  // }
 
     
 }

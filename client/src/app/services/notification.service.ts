@@ -24,7 +24,6 @@ export class NotificationService {
         console.log(this.newEvents);
       });
     }, 86400000);
-
   }
 
 
