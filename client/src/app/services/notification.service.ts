@@ -23,7 +23,7 @@ export class NotificationService {
         this.newEvents=this.getNewEvents(response);
         console.log(this.newEvents);
       });
-    }, 60000);
+    }, 86400000);
 
   }
 
