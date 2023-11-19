@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import emailjs from '@emailjs/browser';
 
+declare var Razorpay: any;
 
 @Component({
   selector: 'app-details',
@@ -24,12 +25,12 @@ export class DetailsComponent {
     })
   }
 
+
+
   bookEvent(){
     this.api.bookAnEvent(this.event.id).subscribe((res: any) => {
       console.log(res);
-      // this.sendConfirmation();
-      alert('You have succeesfully booked the event');
-      this.router.navigate(['/']);
+      this.payNow();
     });
   }
 
@@ -41,5 +42,43 @@ export class DetailsComponent {
       subject: "Event Booking Confirmation",
       message: `You have successfully booked the event: ${this.event.eventName}`,
       });
+  }
+
+
+  //payment integration
+  payNow() {
+    const RozarpayOptions = {
+      description: 'Razorpay',
+      currency: 'INR',
+      amount: this.event.price * 100,
+      name: this.user.name,
+      key: 'rzp_test_4XKIJkM8kdRhHp',
+      image: 'https://avatars.githubusercontent.com/u/7713209?s=280&v=4',
+      prefill: {
+        name: this.user.name,
+        email: this.user.email,
+        phone: this.user.phone
+      },
+      theme: {
+        color: '#FFA927'
+      },
+      modal: {
+        ondismiss:  () => {
+          console.log('dismissed')
+        }
+      }
     }
+
+    const successCallback = (paymentid: any) => {
+      console.log(paymentid);
+    }
+
+    const failureCallback = (e: any) => {
+      console.log(e);
+    }
+
+    Razorpay.open(RozarpayOptions,successCallback, failureCallback);
+  }
+
+    
 }

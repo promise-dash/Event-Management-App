@@ -46,10 +46,16 @@ namespace server.Services
         public void AddAttendee(string eventId, string userId)
         {
             var filter = Builders<Event>.Filter.Eq(e => e.Id, eventId);
-            var objectId = new ObjectId(userId);
-            var update = Builders<Event>.Update.Push(e => e.Attendees, objectId.ToString());
 
-            _events.UpdateOne(filter, update);
+            var objectId = new ObjectId(userId);
+
+            var update = Builders<Event>.Update.AddToSet(e => e.Attendees, objectId.ToString());
+
+            var eventToUpdate = _events.Find(filter).FirstOrDefault();
+            if (!eventToUpdate.Attendees.Contains(userId))
+            {
+                _events.UpdateOne(filter, update);
+            }
         }
 
         public void AddFeedback(string eventId, Feedback feedback)

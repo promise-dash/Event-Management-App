@@ -65,28 +65,11 @@ export class ApiService {
 
 
   //Event endpoints
-  private cachedEvents:Array<any>=[];
-  private cachedFlag:boolean=false;
+  // private cachedEvents:Array<any>=[];
+  // private cachedFlag:boolean=false;
 
   fetchEvents():Observable<any> {
-    if(this.cachedFlag){
-      console.log("Api not fetched");
-      
-      return of(this.cachedEvents);
-    }
-    else{
-      console.log("Api fetched");
-      
-
-      this.cachedFlag=true;
-
-      return this.http.get<any[]>(`${this.eventBaseUrl}`).pipe(
-        map((data:any)=>{
-          this.cachedEvents=data;
-          return data;
-        })
-      );
-    }
+    return this.http.get<any[]>(`${this.eventBaseUrl}`);
   }
 
   fetchEventById(id: string):Observable<any>{
@@ -107,12 +90,12 @@ export class ApiService {
   }
 
   updateEvent(eventId: string, event: any):Observable<any>{
-    this.cachedFlag=false;
+    // this.cachedFlag=false;
     return this.http.put<any>(`${this.eventBaseUrl}/${eventId}`, event);
   }
 
   deleteEvent(id: string): Observable<any>{
-    this.cachedFlag=false;
+    // this.cachedFlag=false;
     return this.http.delete<any>(`${this.eventBaseUrl}/${id}`);
   }
 

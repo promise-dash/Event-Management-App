@@ -1,12 +1,46 @@
-form{
-    width: 50%;
+main{
+    width: 80%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 45% 55%;
     margin: auto;
-    margin-top: 5rem;
+    // gap: 10px;
+
+    .logo{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .right{
+            border-radius: 10px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            padding: 2rem 3rem;
+            width: 100%;
+        }
+
+        h3{
+            text-align: center;
+        }
+    }
+}
+
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+
+    span {
+        color: var(--primary-yellow);
+    }
 }
 
 h3{
     font-family: 'Poppins', sans-serif;
-    font-weight: bold;
 }
 button{
     background-color: var(--primary-yellow);

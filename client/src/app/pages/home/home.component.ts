@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { theme } from '@cloudinary/url-gen/actions/effect';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -24,10 +25,13 @@ export class HomeComponent implements OnInit {
 
   theme: string = '';
 
-  constructor(private api: ApiService, private fb: FormBuilder){
+  notifiedEvents: Array<any> = [];
+
+  constructor(private api: ApiService, private fb: FormBuilder, private notificationService:NotificationService){
     this.searchForm = this.fb.group({
       searchTerm: ''
     });
+    this.notifiedEvents = notificationService.newEvents;
   }
   
   ngOnInit(): void {

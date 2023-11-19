@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { BookedComponent } from './pages/booked/booked.component';
 import { UsersComponent } from './pages/users/users.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { NotificationComponent } from './pages/notification/notification.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     BookedComponent,
     UsersComponent,
     FeedbackComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
