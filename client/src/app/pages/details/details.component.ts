@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from 'src/app/models/Event';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
-// import emailjs from '@emailjs/browser';
-// import * as nodemailer from 'nodemailer';
 
 declare var Razorpay: any;
 
@@ -13,20 +13,18 @@ declare var Razorpay: any;
 })
 export class DetailsComponent {
 
-  event: any;
-  user: any;
+  event: Event;
+  user: User;
   loading: boolean = true;
   
   constructor(private api: ApiService, private route: ActivatedRoute, private router: Router){
     this.user = api.user;
     let id = route.snapshot.params['id'];
-    this.api.fetchEventById(id).subscribe((res: any) => {
+    this.api.fetchEventById(id).subscribe(res => {
       this.event = res;
       this.loading = false;
     })
   }
-
-
 
   bookEvent(){
     this.api.bookAnEvent(this.event.id).subscribe((res: any) => {
@@ -69,32 +67,5 @@ export class DetailsComponent {
 
     Razorpay.open(RozarpayOptions,successCallback, failureCallback);
   }
-
-  // sendEmail() {
-  //   const message = `Your booking is confirmed for ${this.event.eventName}`;
-
-  //   let transporter: nodemailer.Transporter = nodemailer.createTransport({
-  //     service: 'gmail',
-  //     auth: {
-  //       user: 'promisedash79@gmail.com',
-  //       pass: 'pd20010716.'
-  //     }
-  //   });
-
-  //   let mailOptions: nodemailer.SendMailOptions = {
-  //     from: 'YOUR_EMAIL',
-  //     to: this.user.email,
-  //     subject: 'Booking Confirmation',
-  //     text: message
-  //   };
-
-  //   transporter.sendMail(mailOptions, (error, info) => {
-  //     if (error) {
-  //       return console.log(error);
-  //     }
-  //     console.log('Message sent: %s', info.messageId);
-  //   });
-  // }
-
     
 }

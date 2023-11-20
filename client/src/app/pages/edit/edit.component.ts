@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from 'src/app/models/Event';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EditComponent implements OnInit {
 
   editForm: FormGroup;
-  event: any;
+  event: Event;
 
   constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private router: Router){
     let id = this.activeRoute.snapshot.params['id'];

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-users',
@@ -9,7 +10,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 })
 export class UsersComponent implements OnInit {
 
-    users : Array<any> = [];
+    users : Array<User> = [];
 
     constructor(private api: ApiService, private dialog: MatDialog){}
 

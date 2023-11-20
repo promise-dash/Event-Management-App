@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Event } from 'src/app/models/Event';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class NotificationComponent {
 
-  notifiedEvents: Array<any> = [];
+  notifiedEvents: Array<Event> = [];
   loading: boolean = true;
   constructor(private notifictaionService: NotificationService){
     this.notifiedEvents = notifictaionService.newEvents;

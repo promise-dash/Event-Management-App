@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Event } from 'src/app/models/Event';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class BookedComponent implements OnInit  {
 
-  bookedEvents: Array<any> = [];
+  bookedEvents: Array<Event> = [];
   loading: boolean = true;
 
   constructor(private api: ApiService, private activeRoute: ActivatedRoute){

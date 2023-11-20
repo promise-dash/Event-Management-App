@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Event } from 'src/app/models/Event';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -11,18 +13,18 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ViewComponent implements OnInit {
     
-  event: any;
-  attendees: Array<any> = [];
+  event: Event;
+  attendees: Array<User> = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService) {
     console.log('view component');
   }
 
   ngOnInit(): void {
-    this.api.fetchEventById(this.data.eventId).subscribe((res: any) => {
+    this.api.fetchEventById(this.data.eventId).subscribe(res => {
 
-      res.attendees.map((userId: any) => {
-        this.api.fetchUserById(userId).subscribe((res: any) => {
+      res.attendees.map((userId: string) => {
+        this.api.fetchUserById(userId).subscribe(res => {
           this.attendees.push(res);
         });
       });

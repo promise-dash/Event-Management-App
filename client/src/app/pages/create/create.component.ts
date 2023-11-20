@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { Cloudinary } from '@cloudinary/url-gen';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-create',
@@ -12,15 +12,11 @@ import { Cloudinary } from '@cloudinary/url-gen';
 export class CreateComponent {
   
   eventForm: FormGroup;
-  user: any;
+  user: User;
   base64Image: string = '';
-  cld: any;
-  cloud_name = "de2gj6cj9";
-  upload_preset = "onx9phmg";
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
       this.user = this.api.user;
-      this.cld = new Cloudinary({cloud: {cloudName: 'de2gj6cj9'}});
    }
 
   ngOnInit(): void {

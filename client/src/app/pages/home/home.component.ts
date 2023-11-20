@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder } from "@angular/forms";
-import { theme } from '@cloudinary/url-gen/actions/effect';
 import { NotificationService } from 'src/app/services/notification.service';
+import { Event } from 'src/app/models/Event';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +11,11 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class HomeComponent implements OnInit {
 
-  events: Array<any> = [];
+  events: Array<Event> = [];
   loading: boolean = true;
 
   searchForm: FormGroup;
-  searchedEvents: Array<any> = [];
+  searchedEvents: Array<Event> = [];
 
   filteredEvents = this.events;
 
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   theme: string = '';
 
-  notifiedEvents: Array<any> = [];
+  notifiedEvents: Array<Event> = [];
 
   constructor(private api: ApiService, private fb: FormBuilder, private notificationService:NotificationService){
     this.searchForm = this.fb.group({
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
         return false;
       }
       
-      if (this.dateFilter && event.date !== this.dateFilter) {
+      if (this.dateFilter && event.dateOfEvent !== this.dateFilter) {
         return false;
       }
       

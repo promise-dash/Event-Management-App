@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Observable } from 'rxjs';
+import { Event } from '../models/Event';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  oldEvents: Array<any> = [];
-  newEvents: Array<any> = [];
+  oldEvents: Array<Event> = [];
+  newEvents: Array<Event> = [];
 
   constructor(private api: ApiService) {
 
@@ -19,17 +19,18 @@ export class NotificationService {
 
     setInterval(() => {
       
-      this.api.fetchEvents().subscribe((response:any) => {
+      this.api.fetchEvents().subscribe(response => {
         this.newEvents=this.getNewEvents(response);
         console.log(this.newEvents);
       });
-    }, 86400000);
+    }, 2000);
   }
+  // 86400000
 
 
-  getNewEvents(response: any[]) {
+  getNewEvents(response: Event[]) {
     
-    let currentNewEvents = response.filter((currentResponse: any) => {
+    let currentNewEvents = response.filter(currentResponse => {
       let isPresent=false;
       for(let oldEvent of this.oldEvents)
       {

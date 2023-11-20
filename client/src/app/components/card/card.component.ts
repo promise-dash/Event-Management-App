@@ -4,6 +4,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ViewComponent } from '../view/view.component';
 import { FeedbackComponent } from '../feedback/feedback.component';
+import { User } from 'src/app/models/User';
+import { Event } from 'src/app/models/Event';
 
 @Component({
   selector: 'app-card',
@@ -12,9 +14,9 @@ import { FeedbackComponent } from '../feedback/feedback.component';
 })
 export class CardComponent {
 
-  @Input() event: any;
+  @Input() event: Event;
   @Input() userEvents: boolean;
-  user: any;
+  user: User;
 
   constructor(private api: ApiService, private router: Router, private dialog: MatDialog){
     this.user = JSON.parse(localStorage.getItem('user')!);
@@ -23,7 +25,7 @@ export class CardComponent {
 
   handleDelete(id: string){
     console.log('delete');
-    this.api.deleteEvent(id).subscribe((res: any) => {
+    this.api.deleteEvent(id).subscribe(res => {
     
     this.api.mySubject.next(true);
     },(error)=>{

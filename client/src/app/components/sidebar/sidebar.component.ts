@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { ApiService } from 'src/app/services/api.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit  {
 
-  user: any
+  user: User
 
   constructor(private api: ApiService, private router: Router){
     this.api.getUserFromLocalStorage();

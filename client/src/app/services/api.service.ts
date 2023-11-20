@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable,map,of, Subject } from "rxjs";
+import {Observable, map, of, Subject } from "rxjs";
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  user: any;
+  user: User;
   isUserLoggedIn: boolean = false;
 
   mySubject = new Subject<boolean>;
