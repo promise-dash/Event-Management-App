@@ -11,7 +11,7 @@
             <app-loader></app-loader>
             <app-loader></app-loader>
         </div>
-        <div *ngIf="!loading && notifiedEvents.length == 0">
+        <div *ngIf="!loading && notifiedEvents.length === 0">
             <p class="mt-5">No notifictaions yet.</p>
         </div>
         <div *ngIf="!loading && notifiedEvents.length >= 0" class="cards gap-4">

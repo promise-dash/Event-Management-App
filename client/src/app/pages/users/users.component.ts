@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/models/User';
 
 @Component({
@@ -24,6 +24,6 @@ export class UsersComponent implements OnInit {
       this.users=this.users.filter((u)=>u.id!=id);
       this.api.deleteUser(id).subscribe(res => {
         console.log(res);
-      },(error)=>{})
+      });
     }
 }

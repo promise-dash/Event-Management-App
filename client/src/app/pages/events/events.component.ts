@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class EventsComponent implements OnInit {
 
   userEvents: Array<Event> = [];
-  loading: boolean = true;
+  loading = true;
 
   constructor(private api: ApiService, private activeRoute: ActivatedRoute){
     api.mySubject.subscribe(res=>{

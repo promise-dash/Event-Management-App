@@ -12,7 +12,7 @@ import { Event } from 'src/app/models/Event';
 export class HomeComponent implements OnInit {
 
   events: Array<Event> = [];
-  loading: boolean = true;
+  loading = true;
 
   searchForm: FormGroup;
   searchedEvents: Array<Event> = [];
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   priceFilter = { min: 0, max: 100, value: 50 };
   dateFilter = '';
 
-  theme: string = '';
+  theme = '';
 
   notifiedEvents: Array<Event> = [];
 
@@ -70,12 +70,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  changeTheme(){
-    if(this.api.theme === 'light'){
-      this.api.theme = 'dark';
-    }
-    else{
-      this.api.theme = 'light';
-    }
-  }
 }

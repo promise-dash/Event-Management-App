@@ -19,16 +19,20 @@ export class CardComponent {
   user: User;
 
   constructor(private api: ApiService, private router: Router, private dialog: MatDialog){
-    this.user = JSON.parse(localStorage.getItem('user')!);
+    this.user = JSON.parse(localStorage.getItem('user') || '');
+  }
+
+  routerLink(url: string) {
+    this.router.navigate([url]);
   }
 
 
   handleDelete(id: string){
     console.log('delete');
-    this.api.deleteEvent(id).subscribe(res => {
+    this.api.deleteEvent(id).subscribe(() => {
     
     this.api.mySubject.next(true);
-    },(error)=>{
+    },()=>{
       this.api.mySubject.next(true);
     });
   }

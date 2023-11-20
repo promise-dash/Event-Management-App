@@ -10,32 +10,60 @@
   </div>
 
   <div class="options">
-      <div class="icons">
-        <i *ngIf="event.category === 'music'" class="fa-solid fa-music"></i>
-        <i *ngIf="event.category === 'sports'" class="fa-solid fa-dice"></i>
-        <i *ngIf="event.category === 'education'" class="fa-solid fa-graduation-cap"></i>
-        <i *ngIf="event.category === 'dance'" class="fa-solid fa-hand-peace"></i>
-        <i *ngIf="event.category === 'food'" class="fa-solid fa-pizza-slice"></i>
-        <i *ngIf="event.category === 'comedy'" class="fa-solid fa-face-grin-squint-tears"></i>
-      </div>
+    <div class="icons">
+      <i *ngIf="event.category === 'music'" class="fa-solid fa-music"></i>
+      <i *ngIf="event.category === 'sports'" class="fa-solid fa-dice"></i>
+      <i *ngIf="event.category === 'education'" class="fa-solid fa-graduation-cap"></i>
+      <i *ngIf="event.category === 'dance'" class="fa-solid fa-hand-peace"></i>
+      <i *ngIf="event.category === 'food'" class="fa-solid fa-pizza-slice"></i>
+      <i *ngIf="event.category === 'comedy'" class="fa-solid fa-face-grin-squint-tears"></i>
+    </div>
 
-      <div class="price">
-          <small>Starts at</small>
-          <p>₹{{event.price}}</p>
-      </div>
+    <div class="price">
+      <small>Starts at</small>
+      <p>₹{{event.price}}</p>
+    </div>
   </div>
 
   <div *ngIf="(user.role === 'Admin' || user.role === 'Organizer') && userEvents">
     <div class="btns">
-      <a style="color: black; border-radius: 50%;" (click)="showAttendees(event.id); $event.stopPropagation();">
+      <a style="color: black; border-radius: 50%;" (click)="showAttendees(event.id); $event.stopPropagation();"
+        (keydown.enter)="showAttendees(event.id)" (keyup.enter)="showAttendees(event.id); $event.preventDefault()"
+        tabindex="0">
         <i class="fa-solid fa-eye"></i>
       </a>
-      <i class="fa-solid fa-pen-to-square" (click)="$event.stopPropagation();" [routerLink]="'/edit/' + event.id"></i>
+
+      <i class="fa-solid fa-pen-to-square" (click)="$event.stopPropagation();" [routerLink]="'/edit/' + event.id"
+      (keydown.enter)="routerLink('/edit/' + event.id)"
+   (keyup.enter)="routerLink('/edit/' + event.id)"
+      ></i>
       <i class="fa-solid fa-trash-can" (click)="handleDelete(event.id); $event.stopPropagation();"></i>
     </div>
+
+    <!-- <div class="btns">
+      <a style="color: black; border-radius: 50%;" (click)="showAttendees(event.id); $event.stopPropagation();"
+        (keydown.enter)="showAttendees(event.id)" (keyup.enter)="showAttendees(event.id); $event.preventDefault()"
+        tabindex="0">
+        <i class="fa-solid fa-eye"></i>
+      </a>
+
+      <i class="fa-solid fa-pen-to-square" (click)="$event.stopPropagation();"
+        (keydown.enter)="routerLink('/edit/' + event.id)" (keyup.enter)="routerLink('/edit/' + event.id)" tabindex="0">
+      </i>
+      <i class="fa-solid fa-trash-can" (click)="handleDelete(event.id); $event.stopPropagation();"
+        (keydown.enter)="handleDelete(event.id); $event.stopPropagation();"
+        (keyup.enter)="handleDelete(event.id); $event.stopPropagation();" tabindex="0">
+      </i>
+    </div> -->
   </div>
 
   <div *ngIf="user.role === 'Customer' && userEvents" class="feedback-btn">
-    <i (click)="openFeedbackForm(event.id); $event.stopPropagation();" class="fa-solid fa-comment-dots"></i>
+    <i (click)="openFeedbackForm(event.id)" (keyup.enter)="openFeedbackForm(event.id); $event.preventDefault()"
+      class="fa-solid fa-comment-dots" tabindex="0"></i>
   </div>
+
+  <!-- <div *ngIf="user.role === 'Customer' && userEvents" class="feedback-btn">
+    <i (click)="openFeedbackForm(event.id); $event.stopPropagation();" class="fa-solid fa-comment-dots"></i>
+  </div> -->
+
 </div>

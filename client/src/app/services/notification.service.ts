@@ -23,16 +23,16 @@ export class NotificationService {
         this.newEvents=this.getNewEvents(response);
         console.log(this.newEvents);
       });
-    }, 2000);
+    }, 86400000);
   }
   // 86400000
 
 
   getNewEvents(response: Event[]) {
     
-    let currentNewEvents = response.filter(currentResponse => {
+    const currentNewEvents = response.filter(currentResponse => {
       let isPresent=false;
-      for(let oldEvent of this.oldEvents)
+      for(const oldEvent of this.oldEvents)
       {
         if(oldEvent.id===currentResponse.id)
         {

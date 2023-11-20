@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
@@ -9,15 +9,15 @@ import { User } from 'src/app/models/User';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit {
   
   eventForm: FormGroup;
   user: User;
-  base64Image: string = '';
+  base64Image = '';
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
       this.user = this.api.user;
-   }
+  }
 
   ngOnInit(): void {
     this.eventForm = this.fb.group({
@@ -50,8 +50,7 @@ export class CreateComponent {
       this.eventForm.value.creator = this.user;
       console.log(this.eventForm.value);
 
-      this.api.createEvent(this.eventForm.value).subscribe((res: any) => {
-        console.log(res);
+      this.api.createEvent(this.eventForm.value).subscribe(() => {
         this.eventForm.reset();
         this.router.navigate(['/']);
       });

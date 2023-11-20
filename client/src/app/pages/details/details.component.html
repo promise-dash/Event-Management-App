@@ -32,7 +32,7 @@
                 <p>{{event.attendees.length}} people going</p>
                 <div class="price">
                     <span>₹{{event.price}}</span>
-                    <button *ngIf="user.role == 'Customer'" id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
+                    <button *ngIf="user.role === 'Customer'" id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
                       {{ event.attendees.includes(user.id) ? 'Booked' : 'Book Now' }}
                   </button>
                 </div>

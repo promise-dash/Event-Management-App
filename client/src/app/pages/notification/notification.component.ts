@@ -10,7 +10,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class NotificationComponent {
 
   notifiedEvents: Array<Event> = [];
-  loading: boolean = true;
+  loading = true;
   constructor(private notifictaionService: NotificationService){
     this.notifiedEvents = notifictaionService.newEvents;
     this.loading = false;

@@ -4,7 +4,7 @@ import { Event } from 'src/app/models/Event';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 
-declare var Razorpay: any;
+declare let Razorpay: any;
 
 @Component({
   selector: 'app-details',
@@ -15,11 +15,11 @@ export class DetailsComponent {
 
   event: Event;
   user: User;
-  loading: boolean = true;
+  loading = true;
   
   constructor(private api: ApiService, private route: ActivatedRoute, private router: Router){
     this.user = api.user;
-    let id = route.snapshot.params['id'];
+    const id = route.snapshot.params['id'];
     this.api.fetchEventById(id).subscribe(res => {
       this.event = res;
       this.loading = false;

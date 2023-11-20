@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { Event } from 'src/app/models/Event';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 

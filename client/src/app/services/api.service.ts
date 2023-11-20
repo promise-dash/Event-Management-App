@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, map, of, Subject } from "rxjs";
+import {Observable, Subject } from "rxjs";
 import { User } from '../models/User';
+import { Feedback } from '../models/Feedback';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,9 @@ import { User } from '../models/User';
 export class ApiService {
 
   user: User;
-  isUserLoggedIn: boolean = false;
+  isUserLoggedIn = false;
 
   mySubject = new Subject<boolean>;
-
-  theme: string = 'light';
 
   userBaseUrl = "http://localhost:5263/api/Users";
   eventBaseUrl = "http://localhost:5263/api/Events";
@@ -24,7 +23,6 @@ export class ApiService {
     const userString = localStorage.getItem('user');
     if (userString) {
       this.user = JSON.parse(userString);
-      console.log(this.user);
     } else {
       console.log('User is not logged in.');
     }
@@ -34,33 +32,32 @@ export class ApiService {
     const userString = localStorage.getItem('user');
     if (userString) {
       this.user = JSON.parse(userString);
-      console.log(this.user);
     } else {
       console.log('User is not logged in.');
     }
   }
 
   // Authentication
-  registerUser(user: any): Observable<any>{
-    return this.http.post<any>(`${this.userBaseUrl}/register`, user);
+  registerUser(user: User): Observable<User>{
+    return this.http.post<User>(`${this.userBaseUrl}/register`, user);
   }
 
-  loginUser(user: any): Observable<any>{
-    return this.http.post<any>(`${this.userBaseUrl}/login`, user);
+  loginUser(user: User): Observable<User>{
+    return this.http.post<User>(`${this.userBaseUrl}/login`, user);
   }
 
   
   //User endpoints
   
-  fetchAllUsers(): Observable<any>{
-    return this.http.get<any>(`${this.userBaseUrl}`);
+  fetchAllUsers(): Observable<User[]>{
+    return this.http.get<User[]>(`${this.userBaseUrl}`);
   }
 
-  fetchUserById(userId: string): Observable<any>{
-    return this.http.get<any>(`${this.userBaseUrl}/${userId}`);
+  fetchUserById(userId: string): Observable<User>{
+    return this.http.get<User>(`${this.userBaseUrl}/${userId}`);
   }
 
-  deleteUser(id: string){
+  deleteUser(id: string):Observable<any>{
     return this.http.delete<any>(`${this.userBaseUrl}/${id}`);
   }
 
@@ -77,13 +74,13 @@ export class ApiService {
     return this.http.get<any>(`${this.eventBaseUrl}/${id}`);
   }
 
-  createEvent(event: any):Observable<any>{
+  createEvent(event: Event):Observable<Event>{
     const newEvent = {
       ...event,
       attendees: [],
       feedbacks: []
     };
-    return this.http.post<any>(`${this.eventBaseUrl}`, newEvent);
+    return this.http.post<Event>(`${this.eventBaseUrl}`, newEvent);
   }
 
   fetchEventsOfUser(userId: string){
@@ -104,7 +101,7 @@ export class ApiService {
     return this.http.post<any>(`${this.eventBaseUrl}/${eventId}/attendees?userId=${this.user.id}`, '');
   }
 
-  giveFeedback(eventId: string, feedback: any): Observable<any>{
+  giveFeedback(eventId: string, feedback: Feedback): Observable<any>{
     return this.http.post(`${this.eventBaseUrl}/${eventId}/feedbacks`, feedback);
   }
 }

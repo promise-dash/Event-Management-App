@@ -15,14 +15,13 @@ export class EditComponent implements OnInit {
   event: Event;
 
   constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private router: Router){
-    let id = this.activeRoute.snapshot.params['id'];
+    const id = this.activeRoute.snapshot.params['id'];
 
     this.api.fetchEventById(id).subscribe((res: any) => {
       this.event = res;
-      console.log(res);
 
       this.editForm.controls['category'].setValue(this.event.category);
-      let dateOfEvent = new Date(Date.parse(this.event.dateOfEvent));
+      const dateOfEvent = new Date(Date.parse(this.event.dateOfEvent));
 
       this.editForm.patchValue({
         eventName: this.event.eventName,
@@ -56,7 +55,7 @@ export class EditComponent implements OnInit {
     this.event.price=this.editForm.value['price'];
     this.event.image=this.editForm.value['image'];
   
-    this.api.updateEvent(this.event.id, this.event).subscribe((res: any)=>{
+    this.api.updateEvent(this.event.id, this.event).subscribe(()=>{
       this.router.navigate(['/']);
     });
   }
