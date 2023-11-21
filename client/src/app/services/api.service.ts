@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable, Subject } from "rxjs";
 import { User } from '../models/User';
+import { Event } from '../models/Event';
 import { Feedback } from '../models/Feedback';
 
 @Injectable({
@@ -57,8 +58,8 @@ export class ApiService {
     return this.http.get<User>(`${this.userBaseUrl}/${userId}`);
   }
 
-  deleteUser(id: string):Observable<any>{
-    return this.http.delete<any>(`${this.userBaseUrl}/${id}`);
+  deleteUser(id: string):Observable<string>{
+    return this.http.delete<string>(`${this.userBaseUrl}/${id}`);
   }
 
 
@@ -66,12 +67,12 @@ export class ApiService {
   // private cachedEvents:Array<any>=[];
   // private cachedFlag:boolean=false;
 
-  fetchEvents():Observable<any> {
-    return this.http.get<any[]>(`${this.eventBaseUrl}`);
+  fetchEvents():Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.eventBaseUrl}`);
   }
 
-  fetchEventById(id: string):Observable<any>{
-    return this.http.get<any>(`${this.eventBaseUrl}/${id}`);
+  fetchEventById(id: string):Observable<Event>{
+    return this.http.get<Event>(`${this.eventBaseUrl}/${id}`);
   }
 
   createEvent(event: Event):Observable<Event>{
@@ -83,25 +84,25 @@ export class ApiService {
     return this.http.post<Event>(`${this.eventBaseUrl}`, newEvent);
   }
 
-  fetchEventsOfUser(userId: string){
-    return this.http.get<any[]>(`${this.eventBaseUrl}/user/${userId}`);
+  fetchEventsOfUser(userId: string): Observable<Event[]>{
+    return this.http.get<Event[]>(`${this.eventBaseUrl}/user/${userId}`);
   }
 
-  updateEvent(eventId: string, event: any):Observable<any>{
+  updateEvent(eventId: string, event: Event):Observable<Event>{
     // this.cachedFlag=false;
-    return this.http.put<any>(`${this.eventBaseUrl}/${eventId}`, event);
+    return this.http.put<Event>(`${this.eventBaseUrl}/${eventId}`, event);
   }
 
-  deleteEvent(id: string): Observable<any>{
+  deleteEvent(id: string): Observable<string>{
     // this.cachedFlag=false;
-    return this.http.delete<any>(`${this.eventBaseUrl}/${id}`);
+    return this.http.delete<string>(`${this.eventBaseUrl}/${id}`);
   }
 
-  bookAnEvent(eventId: string):Observable<any>{
-    return this.http.post<any>(`${this.eventBaseUrl}/${eventId}/attendees?userId=${this.user.id}`, '');
+  bookAnEvent(eventId: string):Observable<string>{
+    return this.http.post<string>(`${this.eventBaseUrl}/${eventId}/attendees?userId=${this.user.id}`, '');
   }
 
-  giveFeedback(eventId: string, feedback: Feedback): Observable<any>{
-    return this.http.post(`${this.eventBaseUrl}/${eventId}/feedbacks`, feedback);
+  giveFeedback(eventId: string, feedback: Feedback): Observable<string>{
+    return this.http.post<string>(`${this.eventBaseUrl}/${eventId}/feedbacks`, feedback);
   }
 }

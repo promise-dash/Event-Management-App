@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginComponent {
   }
 
   handleLogin(){
-    this.api.loginUser(this.loginForm.value).subscribe((res: any) => {
+    this.api.loginUser(this.loginForm.value).subscribe((res: User) => {
       localStorage.setItem('user', JSON.stringify(res));
       this.api.isUserLoggedIn = true;
       this.router.navigate(['/']);

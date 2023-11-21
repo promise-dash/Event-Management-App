@@ -28,7 +28,6 @@ export class CardComponent {
 
 
   handleDelete(id: string){
-    console.log('delete');
     this.api.deleteEvent(id).subscribe(() => {
     
     this.api.mySubject.next(true);
@@ -38,7 +37,6 @@ export class CardComponent {
   }
 
   showAttendees(eventid: string){
-    console.log('clicked');
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { eventId: eventid };
     this.dialog.open(ViewComponent, dialogConfig);

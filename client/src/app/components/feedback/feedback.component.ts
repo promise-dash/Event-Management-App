@@ -28,8 +28,7 @@ export class FeedbackComponent {
       review: this.reviewForm.value.review,
       reply: ""
     }
-    this.api.giveFeedback(this.data.eventId, feedback).subscribe(res => {
-      console.log(res);
+    this.api.giveFeedback(this.data.eventId, feedback).subscribe(() => {
       this.dialog.closeAll();
       alert('Thanks for your feedback');
     });

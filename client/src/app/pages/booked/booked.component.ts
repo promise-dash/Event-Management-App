@@ -16,10 +16,8 @@ export class BookedComponent  {
   constructor(private api: ApiService, private activeRoute: ActivatedRoute){
     this.api.fetchEvents()
     .subscribe((res: Array<Event>) => {
-      console.log(res);
       this.bookedEvents = res.filter(event => event.attendees.includes(this.activeRoute.snapshot.params['userId']));
       this.loading = false;
-      console.log(this.bookedEvents);
     });
   }
 }

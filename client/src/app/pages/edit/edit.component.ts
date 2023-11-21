@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   constructor(private fb: FormBuilder, private activeRoute: ActivatedRoute, private api: ApiService, private router: Router){
     const id = this.activeRoute.snapshot.params['id'];
 
-    this.api.fetchEventById(id).subscribe((res: any) => {
+    this.api.fetchEventById(id).subscribe((res: Event) => {
       this.event = res;
 
       this.editForm.controls['category'].setValue(this.event.category);

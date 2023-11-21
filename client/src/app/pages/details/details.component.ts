@@ -27,8 +27,7 @@ export class DetailsComponent {
   }
 
   bookEvent(){
-    this.api.bookAnEvent(this.event.id).subscribe((res: any) => {
-      console.log(res);
+    this.api.bookAnEvent(this.event.id).subscribe(() => {
       this.payNow();
     });
   }
@@ -52,7 +51,7 @@ export class DetailsComponent {
       },
       modal: {
         ondismiss:  () => {
-          console.log('dismissed')
+          console.log('dismissed');
         }
       }
     }

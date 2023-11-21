@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.api.getUserFromLocalStorage();
     
-    this.api.fetchEvents().subscribe((res: any) => {
+    this.api.fetchEvents().subscribe((res: Event[]) => {
       console.log("Inside fetch");
       console.log(res);
       this.events = res;
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     });
 
     this.searchForm.valueChanges.subscribe(value => {
-      this.filteredEvents = this.events.filter((event: any) =>
+      this.filteredEvents = this.events.filter((event: Event) =>
         event.eventName.toLowerCase().includes(value.searchTerm.toLowerCase())
       );
     });
