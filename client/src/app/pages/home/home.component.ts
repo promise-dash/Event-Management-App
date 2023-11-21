@@ -38,8 +38,6 @@ export class HomeComponent implements OnInit {
     this.api.getUserFromLocalStorage();
     
     this.api.fetchEvents().subscribe((res: Event[]) => {
-      console.log("Inside fetch");
-      console.log(res);
       this.events = res;
       this.filteredEvents = res;
       this.loading = false;

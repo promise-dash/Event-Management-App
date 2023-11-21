@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
 
     deleteUser(id: string){
       this.users=this.users.filter((u)=>u.id!=id);
-      this.api.deleteUser(id).subscribe(res => {
+      this.api.deleteUser(id).subscribe((res) => {
         console.log(res);
       });
     }

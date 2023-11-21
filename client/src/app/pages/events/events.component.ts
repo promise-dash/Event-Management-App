@@ -28,10 +28,8 @@ export class EventsComponent implements OnInit {
 
   getEvents(){
     this.api.fetchEventsOfUser(this.activeRoute.snapshot.params['id']).subscribe(res => {
-      console.log(res);
       this.userEvents = res;
       this.loading = false;
-      console.log(this.userEvents);
     });
   }
 }

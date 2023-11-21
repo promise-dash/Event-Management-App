@@ -21,7 +21,6 @@ export class NotificationService {
       
       this.api.fetchEvents().subscribe(response => {
         this.newEvents=this.getNewEvents(response);
-        console.log(this.newEvents);
       });
     }, 2000);
   }

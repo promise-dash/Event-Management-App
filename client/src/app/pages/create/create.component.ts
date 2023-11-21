@@ -48,7 +48,6 @@ export class CreateComponent implements OnInit {
     if (this.eventForm.valid) {
       this.eventForm.value.image = this.base64Image;
       this.eventForm.value.creator = this.user;
-      console.log(this.eventForm.value);
 
       this.api.createEvent(this.eventForm.value).subscribe(() => {
         this.eventForm.reset();

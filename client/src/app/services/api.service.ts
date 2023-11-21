@@ -23,9 +23,7 @@ export class ApiService {
   constructor(private http: HttpClient) {
     const userString = localStorage.getItem('user');
     if (userString) {
-      this.user = JSON.parse(userString);
-    } else {
-      console.log('User is not logged in.');
+      this.user = JSON.parse(userString); 
     }
   }
 
@@ -33,9 +31,7 @@ export class ApiService {
     const userString = localStorage.getItem('user');
     if (userString) {
       this.user = JSON.parse(userString);
-    } else {
-      console.log('User is not logged in.');
-    }
+    } 
   }
 
   // Authentication

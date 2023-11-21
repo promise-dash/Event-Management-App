@@ -30,7 +30,7 @@ export class FeedbackComponent {
     }
     this.api.giveFeedback(this.data.eventId, feedback).subscribe(() => {
       this.dialog.closeAll();
-      alert('Thanks for your feedback');
+      // alert('Thanks for your feedback');
     });
   }
 }

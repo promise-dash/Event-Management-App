@@ -24,7 +24,6 @@ export class RegisterComponent {
   }
 
   handleRegister(){
-    console.log(this.registerForm.value);
     this.api.registerUser(this.registerForm.value).subscribe((res: User) => {
       localStorage.setItem('user', JSON.stringify(res));
       this.api.isUserLoggedIn = true;

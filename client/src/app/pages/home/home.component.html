@@ -14,7 +14,7 @@
             </i>
         </div>
 
-        <div class="filters">
+        <!-- <div class="filters">
             <div class="filter">
                 <label for="location-filter">Location</label>
                 <select id="location-filter" [(ngModel)]="locationFilter" (ngModelChange)="filterEvents()">
@@ -38,7 +38,7 @@
                 <label for="date">Date</label>
                 <input id="date" type="date" [(ngModel)]="dateFilter" (ngModelChange)="filterEvents()">
             </div>
-        </div>
+        </div> -->
 
         <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">
             <app-loader></app-loader>
