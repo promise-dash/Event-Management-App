@@ -28,5 +28,9 @@ form{
         padding: 10px 20px;
         width: fit-content;
         align-self: flex-end;
+
+        
+    }&disabled{
+        background-color: var(--secondary-yellow);
     }
 }

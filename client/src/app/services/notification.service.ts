@@ -22,7 +22,7 @@ export class NotificationService {
       this.api.fetchEvents().subscribe(response => {
         this.newEvents=this.getNewEvents(response);
       });
-    }, 2000);
+    }, 200000);
   }
   // 86400000
 

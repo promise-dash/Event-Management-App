@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,10 +13,11 @@ export class FeedbackComponent {
 
   reviewForm: FormGroup;
   user: User;
+  disabled = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, private dialog: MatDialog, private api: ApiService){
     this.reviewForm = this.fb.group({
-      review: '',
+      review: ['', Validators.minLength(1)],
     });
 
     this.user = api.user;
