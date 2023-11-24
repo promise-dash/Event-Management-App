@@ -8,7 +8,8 @@
                 <input type="search" placeholder="Search" formControlName="searchTerm">
             </form>
             <i class="fa-solid fa-bell position-relative" routerLink="/notifications">
-                <span *ngIf="notifiedEvents.length > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill" id="number">
+                <span *ngIf="notifiedEvents.length > 0"
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill" id="number">
                     {{notifiedEvents.length}}
                 </span>
             </i>

@@ -18,7 +18,7 @@ export class CardComponent {
   @Input() userEvents: boolean;
   user: User;
 
-  constructor(private api: ApiService, private router: Router, private dialog: MatDialog){
+  constructor(private api: ApiService, private router: Router, private dialog: MatDialog) {
     this.user = JSON.parse(localStorage.getItem('user') || '');
   }
 
@@ -27,24 +27,24 @@ export class CardComponent {
   }
 
 
-  handleDelete(id: string){
+  handleDelete(id: string) {
     this.api.deleteEvent(id).subscribe(() => {
-    
-    this.api.mySubject.next(true);
-    },()=>{
+
+      this.api.mySubject.next(true);
+    }, () => {
       this.api.mySubject.next(true);
     });
   }
 
-  showAttendees(eventid: string){
+  showAttendees(eventid: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { eventId: eventid };
     this.dialog.open(ViewComponent, dialogConfig);
   }
 
-  openFeedbackForm(eventId: string){
+  openFeedbackForm(eventId: string) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { eventId:  eventId};
+    dialogConfig.data = { eventId };
     this.dialog.open(FeedbackComponent, dialogConfig);
   }
 

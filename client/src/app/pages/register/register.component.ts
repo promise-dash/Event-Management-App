@@ -13,7 +13,7 @@ export class RegisterComponent {
 
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private router: Router){
+  constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
     this.registerForm = this.fb.group({
       name: ['', Validators.required, Validators.minLength(3)],
       email: ['', [Validators.required, Validators.email]],
@@ -23,7 +23,7 @@ export class RegisterComponent {
     })
   }
 
-  handleRegister(){
+  handleRegister(): void {
     this.api.registerUser(this.registerForm.value).subscribe((res: User) => {
       localStorage.setItem('user', JSON.stringify(res));
       this.api.isUserLoggedIn = true;

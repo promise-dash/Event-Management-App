@@ -15,7 +15,7 @@ export class FeedbackComponent {
   user: User;
   disabled = true;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, private dialog: MatDialog, private api: ApiService){
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string }, private fb: FormBuilder, private dialog: MatDialog, private api: ApiService) {
     this.reviewForm = this.fb.group({
       review: ['', Validators.minLength(1)],
     });
@@ -23,7 +23,7 @@ export class FeedbackComponent {
     this.user = api.user;
   }
 
-  submitReview(){
+  submitReview() {
     const feedback = {
       userId: this.user.id,
       review: this.reviewForm.value.review,
