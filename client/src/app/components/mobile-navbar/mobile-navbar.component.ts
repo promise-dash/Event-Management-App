@@ -1,0 +1,29 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
+import { ApiService } from 'src/app/services/api.service';
+
+@Component({
+  selector: 'app-mobile-navbar',
+  templateUrl: './mobile-navbar.component.html',
+  styleUrls: ['./mobile-navbar.component.scss']
+})
+export class MobileNavbarComponent implements OnInit {
+  user: User
+
+  constructor(private api: ApiService, private router: Router){
+    this.api.getUserFromLocalStorage();
+  } 
+
+  ngOnInit(){
+    this.user = this.api.user;
+  }
+
+  
+
+  handleLogout(){
+    localStorage.removeItem('user');
+    this.api.isUserLoggedIn = false;
+    this.router.navigate(['/login']);
+  }
+}

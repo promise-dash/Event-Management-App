@@ -1,17 +1,146 @@
-main{
-    display: flex;
-    gap: 1rem;
+main {
+  display: flex;
+  gap: 1rem;
 }
 
-section{
-    width: 60vw;
+section {
+  width: 60vw;
+  // background-color: red;
+  padding: 0px 30px;
+}
+
+.topbar {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+  position: sticky;
+  top: 0px;
+}
+
+.searchbar {
+  background-color: whitesmoke;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 3rem;
+
+  input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+
+  }
+}
+
+.cards {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+input[type="range"] {
+  appearance: none;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ddd;
+  outline: none;
+  // padding: 10px;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-yellow);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background-color: var(--seconday-yellow);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffffff;
+  }
+
+  option {
+    background-color: #fff;
+    color: #000;
+  }
+
+  &:hover {
+    background-color: var(--primary-yellow);
+  }
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.r {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+input[type="date"] {
+  padding: 5px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+#number {
+  color: white;
+  font-size: 10px;
+  background-color: var(--primary-yellow);
+}
+
+@media (max-width:600px){
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+  }
+  
+  section {
+    width: 100vw;
     // background-color: red;
     padding: 0px 30px;
-}
-
-.topbar{
+  }
+  
+  .topbar {
     width: 100%;
-    margin: auto;May I come to you to get my code reviewed right now
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -19,47 +148,47 @@ section{
     padding: 10px;
     position: sticky;
     top: 0px;
-}
-
-.searchbar{
+  }
+  
+  .searchbar {
     background-color: whitesmoke;
-    width: 75%;
+    width: 85%;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 20px;
     border-radius: 3rem;
-
-    input{
-        background-color: transparent;
-        outline: none;
-        border: none;
-        width: 100%;
-        
+  
+    input {
+      background-color: transparent;
+      outline: none;
+      border: none;
+      width: 100%;
+  
     }
-}
-
-.cards{
-    margin-top: 3rem;
+  }
+  
+  .cards {
+    margin-top: 0rem;
     display: flex;
     flex-direction: column;
-}
-
-.filters{
+  }
+  
+  .filters {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
-}
-
-input[type="range"] {
+  }
+  
+  input[type="range"] {
     appearance: none;
     height: 10px;
     border-radius: 5px;
     background-color: #ddd;
     outline: none;
     // padding: 10px;
-
+  
     &::-webkit-slider-thumb {
       appearance: none;
       width: 20px;
@@ -68,6 +197,7 @@ input[type="range"] {
       border-radius: 50%;
       cursor: pointer;
     }
+  
     &::-moz-range-thumb {
       width: 20px;
       height: 20px;
@@ -76,7 +206,7 @@ input[type="range"] {
       cursor: pointer;
     }
   }
-
+  
   select {
     padding: 5px;
     border: 1px solid #ccc;
@@ -92,32 +222,36 @@ input[type="range"] {
     option {
       background-color: #fff;
       color: #000;
-    }&:hover{
-        background-color: var(--primary-yellow);
+    }
+  
+    &:hover {
+      background-color: var(--primary-yellow);
     }
   }
-
-  .filter{
+  
+  .filter {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-
-  .r{
+  
+  .r {
     display: flex;
     gap: 10px;
     align-items: center;
   }
-
-  input[type="date"]{
+  
+  input[type="date"] {
     padding: 5px;
     outline: none;
     border-radius: 5px;
     border: 1px solid rgb(192, 192, 192);
   }
-
-  #number{
+  
+  #number {
     color: white;
     font-size: 10px;
     background-color: var(--primary-yellow);
   }
+   
+}

@@ -26,6 +26,7 @@ import { BookedComponent } from './pages/booked/booked.component';
 import { UsersComponent } from './pages/users/users.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { NotificationComponent } from './pages/notification/notification.component';
+import { MobileNavbarComponent } from './components/mobile-navbar/mobile-navbar.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { NotificationComponent } from './pages/notification/notification.compone
     UsersComponent,
     FeedbackComponent,
     NotificationComponent,
+    MobileNavbarComponent,
   ],
   imports: [
     BrowserModule,

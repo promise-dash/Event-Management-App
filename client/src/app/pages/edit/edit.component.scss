@@ -23,3 +23,9 @@ button{
         background-color: var(--primary-yellow);
     }
 }
+
+@media (max-width: 600px){
+    main{
+        flex-direction: column;
+    }
+}

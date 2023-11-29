@@ -14,7 +14,7 @@
       
       img {
         width: 100%;
-        height: 100px;
+        // height: 100px;
         border-radius: 20px;
       }
     }
@@ -82,4 +82,126 @@
         color: white;
         border-radius: 10px;
       }
+    }
+
+    @media (max-width:600px){
+      .event-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        grid-template-columns: 25% 65% 10%;
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        padding: 10px 30px;
+        cursor: pointer;
+        gap: 3vw;
+        
+        .image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0px;
+            width: 78vw;
+            height: 60vw;
+            overflow: hidden;
+            border-radius: 12px;
+          
+          img {
+            width: 110vw;
+            // height: 100px;
+            border-radius: 12px;
+          }
+        }
+        
+        .content {
+          display: flex;
+          flex-direction: column;
+    
+          small{
+            font-size: 4.2vw;
+            color: var(--primary-yellow);
+            letter-spacing: 0.3vw;
+          }
+          
+          .title {
+            font-size: 8vw;
+            font-weight: 600;
+            letter-spacing: 0.1vw;
+            font-family: 'Poppins', sans-serif;
+          }
+          
+          .description {
+            font-size: 4.5vw;
+            color: rgba(0,0,0,0.4);
+            font-weight: 400;
+            padding-right: 5px;
+          }
+        }
+    
+        .options{
+            text-align: right;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+     
+            width: 90vw;
+            .price{
+              display:flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              gap: 0vw;
+              width: 65vw;
+      
+              small{
+                  font-size: 4.2vw;
+                  width: 25vw;
+                  color: rgba(0,0,0,0.6);
+              }
+      
+              p{
+                margin-top: 10px;
+                  font-weight: bold;
+                  font-size: 8.2vw;
+                  width: 25vw;
+                  color:  var(--primary-yellow);
+              }
+            }
+            
+
+            i{
+              display: none;
+            }
+    
+          }
+    
+    }
+        .btns{
+          margin-top: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor:auto;
+    
+          i{
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 50%;
+          }:hover{
+            background-color: whitesmoke;
+          }
+          
+          button{
+            border: none;
+            outline: none;
+            padding: 5px 20px;
+            background-color: var(--primary-yellow);
+            color: white;
+            border-radius: 10px;
+          }
+        }
+     
     }

@@ -79,3 +79,93 @@
         color: white;
     }
 }
+
+@media (max-width : 600px){
+    .sidebar{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        height: 6.5vh;
+        border-right: 2px solid rgb(244, 244, 244);
+        padding: 20px 20px;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+    
+        h2{
+            cursor: pointer;
+            margin-bottom: 0rem;
+            font-family: 'Poppins', sans-serif;
+    
+            span {
+                color: var(--primary-yellow);
+            }
+        }
+    
+        .links{
+            display: none;
+            flex-direction: column;
+            gap: 0px;
+    
+            div{
+                padding: 0px 0px;
+                border-radius: 20px;
+                font-weight: 500;
+                cursor: pointer;
+                display: flex;
+                gap: 0px;
+                font-size: 1rem;
+    
+                i{
+                    font-size: 20px;
+                }
+            }:hover{
+                background-color: whitesmoke;
+            }
+            
+        }
+        button{
+            display: none;
+            margin-top: 0rem;
+            background-color: var(--primary-yellow);
+            color: white;
+            text-align: center;
+            padding: 0px;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+        }
+    
+        .logout-btn{
+            margin-top: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            button{
+
+                background-color: transparent;
+                color: black;
+                display: flex;
+                align-items: center;
+                gap:10px;
+                width: 100%;
+            }:hover{
+                background-color: whitesmoke;
+            }
+        }
+    
+    }
+    
+    .user{
+        button{
+            background-color: whitesmoke;
+            color: black;
+            width: 100%;
+        }
+        button:hover{
+            background-color: var(--primary-yellow);
+            color: white;
+        }
+    }
+}

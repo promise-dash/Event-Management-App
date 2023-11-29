@@ -1,0 +1,21 @@
+main{
+    display: none;
+}
+
+@media (max-width:600px){
+    main{
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: var(--primary-yellow);
+        width: 100vw;
+        padding: 4vw 1vw;
+        justify-content: space-evenly;
+        i{
+            font-size: 6.3vw;
+            color: white;
+        }
+    }
+}

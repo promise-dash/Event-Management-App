@@ -1,0 +1,7 @@
+<main>
+    <i class="fa-solid fa-house" routerLink="/"></i>
+    <i class="fa-regular fa-calendar-check" *ngIf="user.role === 'Organizer' || user.role === 'Admin'" [routerLink]="['/events', user.id]"></i>
+    <i class="fa-solid fa-ticket" *ngIf="user.role === 'Customer'" [routerLink]="['/booked', user.id]"></i>
+    <i class="fa-solid fa-pen-to-square" *ngIf="user.role === 'Organizer' || user.role === 'Admin'" routerLink="/create"></i>
+    <i class="fa-solid fa-user-group" *ngIf="user.role === 'Admin'" routerLink="/users"></i>
+</main>
