@@ -1,4 +1,4 @@
-<div class="event-card" [routerLink]="'/details/' + event.id">
+<div class="event-card" (click)="handleClick(event.id)">
   <div class="image">
     <img src="{{event.image}}" alt="Card Image">
   </div>

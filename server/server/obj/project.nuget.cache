@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vWLv1MW6gAfbq5RHf4t7qoopRWMYOXZUnaYFVsOhG/a59rIczKuJE+RGiMZVfbQB8i7xVTLnAjkVHb54JsAJnA==",
+  "dgSpecHash": "0HQw9pJ4T7wHwd/SH3R45l0ZzJ57QNNsYnfGVIV4ZtYF/7frxtHL0TIozK8hXbzDf00CwcBLH+QUktRmD89a/Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Capstone\\server\\server\\server.csproj",
+  "projectFilePath": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Event-Management-App\\server\\server\\server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PRDASH3\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\PRDASH3\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

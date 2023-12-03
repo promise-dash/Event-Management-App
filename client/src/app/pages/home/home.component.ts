@@ -3,11 +3,24 @@ import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { NotificationService } from 'src/app/services/notification.service';
 import { Event } from 'src/app/models/Event';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('showDivTransition', [
+      state('hidden', style({
+        height: '0px'
+      })),
+      state('visible', style({
+        height: '*'
+      })),
+      transition('hidden <=> visible', animate('300ms ease-in-out')),
+      transition('visible <=> hidden', animate('300ms ease-in-out'))
+    ])
+  ]
 })
 export class HomeComponent implements OnInit {
 
@@ -19,13 +32,13 @@ export class HomeComponent implements OnInit {
 
   filteredEvents = this.events;
 
-  locationFilter = 'all';
-  priceFilter = { min: 0, max: 100, value: 50 };
+  locationFilter = 'All';
+  categoryFilter = "all";
   dateFilter = '';
 
-  theme = '';
-
-  notifiedEvents: Array<Event> = [];
+  sortOrder: 'asc' | 'desc' = 'desc';
+  sortOrderTitle: 'asc' | 'desc' = 'desc';
+  show = false;
 
   constructor(private api: ApiService, private fb: FormBuilder,) {
     this.searchForm = this.fb.group({
@@ -52,20 +65,40 @@ export class HomeComponent implements OnInit {
 
   filterEvents() {
     this.filteredEvents = this.events.filter(event => {
-      if (this.locationFilter !== 'all' && event.location !== this.locationFilter) {
+      if (this.locationFilter !== 'All' && event.location !== this.locationFilter) {
         return false;
       }
 
-      if (event.price > this.priceFilter.value) {
-        return false;
-      }
-
-      if (this.dateFilter && event.dateOfEvent !== this.dateFilter) {
+      if (this.categoryFilter !== 'all' && event.category !== this.categoryFilter) {
         return false;
       }
 
       return true;
     });
+  }
+
+  sortEventsByPrice() {
+    if (this.sortOrder === 'asc') {
+      this.filteredEvents.sort((a, b) => b.price - a.price);
+      this.sortOrder = 'desc';
+    } else {
+      this.filteredEvents.sort((a, b) => a.price - b.price);
+      this.sortOrder = 'asc';
+    } 
+  }
+
+  sortEventsByTitle() {
+    if (this.sortOrderTitle === 'asc') {
+      this.filteredEvents.sort((a: any, b: any) => b.eventName.localeCompare(a.eventName));
+      this.sortOrderTitle = 'desc';
+    } else {
+      this.filteredEvents.sort((a: any, b: any) => a.eventName.localeCompare(b.eventName));
+      this.sortOrderTitle = 'asc';
+    }
+  }
+
+  toggleFilter() {
+    this.show = !this.show;
   }
 
 }

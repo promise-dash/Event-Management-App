@@ -32,9 +32,11 @@
                 <p>{{event.attendees.length}} people going</p>
                 <div class="price">
                     <span>₹{{event.price}}</span>
-                    <button *ngIf="user.role === 'Customer'" id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
-                      {{ event.attendees.includes(user.id) ? 'Booked' : 'Book Now' }}
+                  <button *ngIf="!isEventExpired() && (user.role === 'Customer' || user.role === 'Organizer')" id="book-btn" [disabled]="event.attendees.includes(user.id)" (click)="bookEvent()">
+                    {{ event.attendees.includes(user.id) ? 'Booked' : 'Book Now' }}
                   </button>
+                  
+                  <button *ngIf="isEventExpired()" disabled style="background-color: var(--secondary-yellow); cursor: auto;">Event has expired</button>
                 </div>
             </div>
 
@@ -51,6 +53,8 @@
           <div *ngFor="let feedback of event.feedbacks" class="reviews">
             <p>{{feedback.review}}</p>
           </div>
+
+          <button (click)="openFeedbackForm(event.id)">Write review</button>
         </div>
       </section>
 

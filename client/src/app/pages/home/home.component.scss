@@ -19,6 +19,7 @@ section {
   padding: 10px;
   position: sticky;
   top: 0px;
+  padding-top: 15px;
 }
 
 .searchbar {
@@ -41,6 +42,7 @@ section {
 
 .cards {
   margin-top: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -52,31 +54,6 @@ section {
   margin-top: 1rem;
 }
 
-input[type="range"] {
-  appearance: none;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #ddd;
-  outline: none;
-  // padding: 10px;
-
-  &::-webkit-slider-thumb {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary-yellow);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  &::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background-color: var(--seconday-yellow);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-}
 
 select {
   padding: 5px;
@@ -94,16 +71,20 @@ select {
     background-color: #fff;
     color: #000;
   }
-
-  &:hover {
-    background-color: var(--primary-yellow);
-  }
 }
 
 .filter {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  button{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: transparent;
+  }
 }
 
 .r {

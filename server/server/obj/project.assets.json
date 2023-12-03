@@ -1594,11 +1594,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Capstone\\server\\server\\server.csproj",
+      "projectUniqueName": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Event-Management-App\\server\\server\\server.csproj",
       "projectName": "server",
-      "projectPath": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Capstone\\server\\server\\server.csproj",
+      "projectPath": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Event-Management-App\\server\\server\\server.csproj",
       "packagesPath": "C:\\Users\\PRDASH3\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Capstone\\server\\server\\obj\\",
+      "outputPath": "C:\\Users\\PRDASH3\\Desktop\\Projects\\Event-Management-App\\server\\server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

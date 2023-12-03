@@ -1,25 +1,25 @@
-main{
-    display: flex;
-    gap: 1rem;
+main {
+  display: flex;
+  gap: 1rem;
 
-    .spinner-border{
-      margin: auto;
-      width: 50px;
-      height: 50px;
-    }
+  .spinner-border {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+  }
 }
 
-h2{
+h2 {
   font-weight: bold;
 }
 
 section {
-    width: 60vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 30px;
-  
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 30px;
+
   .event-image {
     img {
       width: 550px;
@@ -27,7 +27,7 @@ section {
       border-radius: 20px;
     }
   }
-  
+
   .event-info-container {
     width: 100%;
     display: flex;
@@ -43,18 +43,18 @@ section {
       font-weight: bold;
     }
   }
-  
+
   .organizer-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-right: 20px;
-    
+
     p {
       margin: 3px 0;
     }
   }
-  
+
   .event-date-location {
     display: flex;
     flex-direction: column;
@@ -76,7 +76,7 @@ section {
       line-height: 1.5;
     }
   }
-  
+
   .event-book {
     display: flex;
     align-items: center;
@@ -84,18 +84,19 @@ section {
     margin-top: 50px;
     width: 100%;
 
-    .price{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 3px;
+    .price {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
     }
 
-    span{
-        color: var(--primary-yellow);
-        font-weight: bold;
-        font-size: 20px;
+    span {
+      color: var(--primary-yellow);
+      font-weight: bold;
+      font-size: 20px;
     }
+
     button {
       background-color: var(--primary-yellow);
       color: #fff;
@@ -103,23 +104,25 @@ section {
       border: none;
       border-radius: 10px;
       cursor: pointer;
+
       &:hover {
         background-color: var(--secondary-yellow)
       }
-      &:disabled{
+
+      &:disabled {
         background-color: var(--secondary-yellow);
       }
     }
   }
-  
+
 }
 
-h3{
+h3 {
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
 }
 
-.comments{
+.comments {
   background-color: whitesmoke;
   margin-top: 3rem;
   width: 100%;
@@ -129,17 +132,17 @@ h3{
   padding-right: 20px;
   padding-top: 10px;
 
-  h5{
+  h5 {
     font-family: 'Poppins', sans-serif;
   }
 
-  .reviews{
+  .reviews {
     display: flex;
     flex-direction: column;
     gap: 0;
     padding: 10px;
-    
-    p{
+
+    p {
       background-color: white;
       border-radius: 10px;
       padding: 10px;
@@ -148,155 +151,173 @@ h3{
   }
 }
 
-@media (max-width:600px){
-  main{
+button {
+  float: right;
+  background-color: var(--primary-yellow);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--secondary-yellow)
+  }
+
+}
+
+@media (max-width:600px) {
+  main {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
-    .spinner-border{
+    .spinner-border {
       margin: auto;
       width: 50px;
       height: 50px;
     }
-}
+  }
 
-h2{
-  font-weight: bold;
-}
+  h2 {
+    font-weight: bold;
+  }
 
-section {
+  section {
     width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 10px 30px;
-  
-  .event-image {
-    img {
-      width: 350px;
-      height: 270px;
-      border-radius: 20px;
-    }
-  }
-  
-  .event-info-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 50px;
-    font-size: 13px;
 
-    h5 {
-      margin-bottom: 20px;
-      font-family: "Poppins", sans-serif;
-      font-weight: bold;
+    .event-image {
+      img {
+        width: 350px;
+        height: 270px;
+        border-radius: 20px;
+      }
     }
-  }
-  
-  .organizer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 20px;
-    
-    p {
-      margin: 3px 0;
+
+    .event-info-container {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+      font-size: 13px;
+
+      h5 {
+        margin-bottom: 20px;
+        font-family: "Poppins", sans-serif;
+        font-weight: bold;
+      }
     }
-  }
-  
-  .event-date-location {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 
-    p {
-      margin: 3px 0;
+    .organizer-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-right: 20px;
+
+      p {
+        margin: 3px 0;
+      }
     }
-  }
 
-  .event-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+    .event-date-location {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
 
-    p {
-      font-size: 17px;
-      line-height: 1.5;
+      p {
+        margin: 3px 0;
+      }
     }
-  }
-  
-  .event-book {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 50px;
-    width: 100%;
 
-    .price{
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+
+      p {
+        font-size: 17px;
+        line-height: 1.5;
+      }
+    }
+
+    .event-book {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 50px;
+      width: 100%;
+
+      .price {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         gap: 3px;
-    }
+      }
 
-    span{
+      span {
         color: var(--primary-yellow);
         font-weight: bold;
         font-size: 20px;
-    }
-    button {
-      background-color: var(--primary-yellow);
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      &:hover {
-        background-color: var(--secondary-yellow)
       }
-      &:disabled{
-        background-color: var(--secondary-yellow);
+
+      button {
+        background-color: var(--primary-yellow);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--secondary-yellow)
+        }
+
+        &:disabled {
+          background-color: var(--secondary-yellow);
+        }
       }
     }
-  }
-  
-}
 
-h3{
-  font-family: "Poppins", sans-serif;
-  font-weight: bolder;
-}
-
-.comments{
-  background-color: whitesmoke;
-  margin-top: 3rem;
-  width: 100%;
-  text-align: left;
-  border-radius: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 10px;
-
-  h5{
-    font-family: 'Poppins', sans-serif;
   }
 
-  .reviews{
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding: 10px;
-    
-    p{
-      background-color: white;
-      border-radius: 10px;
+  h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: bolder;
+  }
+
+  .comments {
+    background-color: whitesmoke;
+    margin-top: 3rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+
+    h5 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       padding: 10px;
-      width: fit-content;
+
+      p {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+        width: fit-content;
+      }
     }
   }
-}
 }

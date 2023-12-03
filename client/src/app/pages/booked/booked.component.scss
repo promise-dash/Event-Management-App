@@ -1,11 +1,55 @@
 main{
     display: flex;
     gap: 1rem;
+
+    .topbar{
+        z-index: 10;
+    }
+
+    section{
+        width: 80vw;
+        padding: 0px 20px;
+
+        full-calendar{
+            height: 80vh;
+        }
+
+    }
+    
 }
 
-section{
-    width: 60vw;
-    padding: 0px 30px;
+.spinner-border{
+    margin: auto;
+    width: 50px;
+    height: 50px;
+  }
+
+
+::ng-deep .fc-col-header-cell-cushion{
+    color: black;
+    text-decoration: none;
+}
+
+::ng-deep .fc-button-primary{
+    background-color: var(--primary-yellow);
+}
+::ng-deep .fc-toolbar-title{
+    font-size: 15px;
+}
+::ng-deep .fc-daygrid-day-number{
+    color: black;
+    text-decoration: none;
+}
+::ng-deep .fc-event-title-container{
+    background-color: var(--primary-yellow);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+    text-wrap: wrap;
+}
+::ng-deep .fc-event, .fc-event-start, .fc-event-end, .fc-daygrid-event, .fc-daygrid-block-event, .fc-h-event{
+    background-color: var(--primary-yellow);
+    cursor: pointer;
 }
 
 h4{

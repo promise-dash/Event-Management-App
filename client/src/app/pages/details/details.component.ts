@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FeedbackComponent } from 'src/app/components/feedback/feedback.component';
 import { Event } from 'src/app/models/Event';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
@@ -11,19 +13,35 @@ declare let Razorpay: any;
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit{
 
   event: Event;
   user: User;
   loading = true;
+  currentDate: Date = new Date();
   
-  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router){
-    this.user = api.user;
-    const id = route.snapshot.params['id'];
+  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router,  private dialog: MatDialog){}
+
+  ngOnInit(): void {
+    this.user = this.api.user;
+    
+    this.currentDate.setHours(0, 0, 0, 0);
+    
+    this.fetchEventDetails();
+  }
+
+  isEventExpired(): boolean {
+    const eventDate = Date.parse(this.event.dateOfEvent);
+    const currentDateTimestamp = this.currentDate.getTime();
+    return eventDate < currentDateTimestamp;
+  }
+
+  fetchEventDetails(): void{
+    const id = this.route.snapshot.params['id'];
     this.api.fetchEventById(id).subscribe(res => {
       this.event = res;
       this.loading = false;
-    })
+    });
   }
 
   bookEvent(){
@@ -52,7 +70,12 @@ export class DetailsComponent {
       modal: {
         ondismiss:  () => {
           console.log('dismissed');
+          return;
         }
+      },
+
+      handler: () => {
+        this.router.navigate(["/"]);
       }
     }
 
@@ -65,6 +88,15 @@ export class DetailsComponent {
     }
 
     Razorpay.open(RozarpayOptions,successCallback, failureCallback);
+  }
+
+  openFeedbackForm(eventId: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { eventId };
+    const dialogRef=this.dialog.open(FeedbackComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(()=>{
+      this.fetchEventDetails();
+    })
   }
     
 }

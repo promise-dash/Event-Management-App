@@ -48,4 +48,8 @@ export class CardComponent {
     this.dialog.open(FeedbackComponent, dialogConfig);
   }
 
+  handleClick(id: string){
+    this.router.navigate([`/details/${id}`]);
+  }
+
 }

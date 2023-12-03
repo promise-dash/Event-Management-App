@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, Subject } from "rxjs";
+import {Observable, Subject, map,of } from "rxjs";
 import { User } from '../models/User';
 import { Event } from '../models/Event';
 import { Feedback } from '../models/Feedback';
@@ -45,7 +45,6 @@ export class ApiService {
 
   
   //User endpoints
-  
   fetchAllUsers(): Observable<User[]>{
     return this.http.get<User[]>(`${this.userBaseUrl}`);
   }
@@ -60,11 +59,29 @@ export class ApiService {
 
 
   //Event endpoints
-  // private cachedEvents:Array<any>=[];
-  // private cachedFlag:boolean=false;
+  private cachedEvents: Array<any> = [];
+  private cachedFlag = false;
 
   fetchEvents():Observable<Event[]> {
     return this.http.get<Event[]>(`${this.eventBaseUrl}`);
+    // if(this.cachedFlag){
+    //   console.log("Api not fetched");
+
+    //   return of(this.cachedEvents);
+    // }
+    // else{
+    //   console.log("Api fetched");
+
+
+    //   this.cachedFlag=true;
+
+    //   return this.http.get<Event[]>(`${this.eventBaseUrl}`).pipe(
+    //     map((data:Event[])=>{
+    //       this.cachedEvents=data;
+    //       return data;
+    //     })
+    //   );
+    // }
   }
 
   fetchEventById(id: string):Observable<Event>{

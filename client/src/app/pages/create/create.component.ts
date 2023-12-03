@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms"
+import { FormGroup, FormBuilder, Validators, AbstractControl, ValidatorFn } from "@angular/forms"
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { User } from 'src/app/models/User';
@@ -14,17 +14,22 @@ export class CreateComponent implements OnInit {
   eventForm: FormGroup;
   user: User;
   base64Image = '';
+  maxDate: string;
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router) {
       this.user = this.api.user;
   }
 
   ngOnInit(): void {
+    // Set the max date to today
+    const today = new Date();
+    this.maxDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+
     this.eventForm = this.fb.group({
       eventName: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      dateOfEvent: ['', Validators.required],
+      dateOfEvent: ['', [Validators.required, dateValidator()]],
       time: ['', Validators.required],
       location: ['', Validators.required],
       price: [0, Validators.required],
@@ -59,3 +64,12 @@ export class CreateComponent implements OnInit {
     }
   }
 }
+
+export const dateValidator = (): ValidatorFn => {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const selectedDate = new Date(control.value);
+    const today = new Date();
+
+    return selectedDate < today ? { dateInPast: true } : null;
+  };
+};

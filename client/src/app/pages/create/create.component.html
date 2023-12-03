@@ -21,12 +21,19 @@
       </select>
     </div>
     <div class="col-md-6">
-      <label for="inputDate" class="form-label">Date</label>
-      <input type="date" formControlName="dateOfEvent" class="form-control" id="inputDate" required>
+      <!-- <label for="inputDate" class="form-label">Date</label>
+      <input type="date" formControlName="dateOfEvent" class="form-control" id="inputDate" required> -->
+      <label for="dateOfEvent" class="form-label">Date</label>
+      <input type="date" id="dateOfEvent" formControlName="dateOfEvent" [max]="maxDate" class="form-control" id="inputDate" required>
+      <div
+        *ngIf="eventForm.get('dateOfEvent')?.invalid && (eventForm.get('dateOfEvent')?.dirty || eventForm.get('dateOfEvent')?.touched)">
+        <div *ngIf="eventForm.get('dateOfEvent')?.errors?.['dateInPast']" style="color: red; font-size: 13px;">Please select a future date.</div>
+      </div>
     </div>
     <div class="col-md-6">
       <label for="meeting-time inputTime" class="form-label">Time</label>
-      <input type="time" class="form-control" id="meeting-time" name="meeting-time" min="09:00" max="18:00" required formControlName="time">
+      <input type="time" class="form-control" id="meeting-time" name="meeting-time" min="09:00" max="18:00" required
+        formControlName="time">
     </div>
     <div class="col-md-12">
       <label for="inputLocation" class="form-label">Location</label>
@@ -38,7 +45,8 @@
     </div>
     <div class="col-md-6">
       <label for="inputImage" class="form-label">Image Url</label>
-      <input type="file" formControlName="image" class="form-control" id="inputImage" required (change)="handleFileInput($event)">
+      <input type="file" formControlName="image" class="form-control" id="inputImage" required
+        (change)="handleFileInput($event)">
     </div>
     <div class="col-md-6">
       <label for="inputPrice" class="form-label">Price</label>

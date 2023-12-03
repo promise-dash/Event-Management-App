@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog ,MatDialogRef} from '@angular/material/dialog';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -15,7 +15,7 @@ export class FeedbackComponent {
   user: User;
   disabled = true;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string }, private fb: FormBuilder, private dialog: MatDialog, private api: ApiService) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string }, private fb: FormBuilder, private dialog: MatDialog, private api: ApiService,private dialogRef:MatDialogRef<FeedbackComponent>) {
     this.reviewForm = this.fb.group({
       review: ['', Validators.minLength(1)],
     });
@@ -30,8 +30,7 @@ export class FeedbackComponent {
       reply: ""
     }
     this.api.giveFeedback(this.data.eventId, feedback).subscribe(() => {
-      this.dialog.closeAll();
-      // alert('Thanks for your feedback');
+      this.dialogRef.close(true);
     });
   }
 }

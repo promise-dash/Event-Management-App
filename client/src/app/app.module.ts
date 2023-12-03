@@ -27,6 +27,10 @@ import { UsersComponent } from './pages/users/users.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { NotificationComponent } from './pages/notification/notification.component';
 import { MobileNavbarComponent } from './components/mobile-navbar/mobile-navbar.component';
+import { StatsComponent } from './pages/stats/stats.component';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { FullCalendarModule } from '@fullcalendar/angular'; // FullCalendar
+import interactionPlugin from '@fullcalendar/interaction'; // Interaction plugin
 
 
 @NgModule({
@@ -49,6 +53,8 @@ import { MobileNavbarComponent } from './components/mobile-navbar/mobile-navbar.
     FeedbackComponent,
     NotificationComponent,
     MobileNavbarComponent,
+    StatsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,9 @@ import { MobileNavbarComponent } from './components/mobile-navbar/mobile-navbar.
     MatDialogModule,
     MatTableModule,
     FormsModule,
+    FullCalendarModule,
+    CanvasJSAngularChartsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

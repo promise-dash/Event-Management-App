@@ -7,39 +7,56 @@
                 <i class="fa-solid fa-magnifying-glass" style="font-size: 20px;"></i>
                 <input type="search" placeholder="Search" formControlName="searchTerm">
             </form>
-            <i class="fa-solid fa-bell position-relative" routerLink="/notifications">
-                <span *ngIf="notifiedEvents.length > 0"
+            <i class="fa-solid fa-filter" (click)="toggleFilter()"></i>
+            <i class="fa-solid fa-bell position-relative">
+                <!-- <span *ngIf="notifiedEvents.length > 0"
                     class="position-absolute top-0 start-100 translate-middle badge rounded-pill" id="number">
                     {{notifiedEvents.length}}
-                </span>
+                </span> -->
             </i>
         </div>
 
-        <!-- <div class="filters">
+        <div [@showDivTransition]="show ? 'visible' : 'hidden'" [hidden]="!show" class="filters">
             <div class="filter">
                 <label for="location-filter">Location</label>
                 <select id="location-filter" [(ngModel)]="locationFilter" (ngModelChange)="filterEvents()">
-                <option value="all">All</option>
-                <option value="Hyderabad">Hyderabad</option>
-                <option value="Mumbai">Mumbai</option>
-                <option value="Pune">Pune</option>
+                    <option value="All">All</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Bengaluru">Bengaluru</option>
                 </select>
             </div>
 
             <div class="filter">
-                <label for="range">Price</label>
-                <div class="r">
-                    <span class="price-value">{{ priceFilter.min }}</span>
-                    <input id ="range" type="range" [(ngModel)]="priceFilter.value" (ngModelChange)="filterEvents()">
-                    <span class="price-value">{{ priceFilter.max }}</span>
-                </div>
+                <label for="date">Category</label>
+                <select id="location-filter" [(ngModel)]="categoryFilter" (ngModelChange)="filterEvents()">
+                    <option value="all">All</option>
+                    <option value="music">Music</option>
+                    <option value="dance">Dance</option>
+                    <option value="food">Food</option>
+                    <option value="education">Education</option>
+                    <option value="sports">Sports</option>
+                    <option value="comedy">Comedy</option>
+                </select>
             </div>
 
             <div class="filter">
-                <label for="date">Date</label>
-                <input id="date" type="date" [(ngModel)]="dateFilter" (ngModelChange)="filterEvents()">
-            </div>
-        </div> -->
+                <label for="price">Price</label>
+                <button (click)="sortEventsByPrice()">
+                    <i *ngIf="sortOrder === 'desc'" class="fa-solid fa-arrow-down-short-wide"></i>
+                    <i *ngIf="sortOrder === 'asc'" class="fa-solid fa-arrow-up-wide-short"></i>
+                </button>
+            </div>  
+
+            <div class="filter">
+                <label for="title">Title</label>
+                <button (click)="sortEventsByTitle()">
+                    <i *ngIf="sortOrderTitle === 'desc'" class="fa-solid fa-arrow-down-a-z"></i>
+                    <i *ngIf="sortOrderTitle === 'asc'" class="fa-solid fa-arrow-down-z-a"></i>
+                </button>
+            </div>            
+        </div>
 
         <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">
             <app-loader></app-loader>
@@ -54,6 +71,6 @@
     </section>
 
     <app-widgets></app-widgets>
-
+    <br>
     <app-mobile-navbar></app-mobile-navbar>
 </main>

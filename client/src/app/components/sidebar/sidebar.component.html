@@ -9,11 +9,16 @@
         </div>
         <div *ngIf="user.role === 'Organizer' || user.role === 'Admin'" [routerLink]="['/events', user.id]">
             <i class="fa-regular fa-calendar-check"></i>
-            Your Events
+            My Events
         </div>
         <div *ngIf="user.role === 'Customer'" [routerLink]="['/booked', user.id]">
             <i class="fa-solid fa-ticket"></i>
-            Tickets
+            Bookings
+        </div>
+
+        <div *ngIf="user.role === 'Admin'" routerLink="/stats">
+            <i class="fa-solid fa-chart-simple"></i>
+            Statistics
         </div>
     </div>
     <button *ngIf="user.role === 'Organizer' || user.role === 'Admin'" class="create-btn" routerLink="/create">

@@ -3,23 +3,31 @@
 
     <section class="content">
         <div class="topbar">
-           <h4>Booked Events</h4>
+            <h4>Booked Events</h4>
         </div>
 
         <div *ngIf="loading" class="d-flex flex-column gap-4 mt-5">
-            <app-loader></app-loader>
-            <app-loader></app-loader>
-            <app-loader></app-loader>
+            <div *ngIf="loading" class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
         </div>
         <div *ngIf="!loading && bookedEvents.length === 0">
             <p class="mt-5">You have not booked any event yet</p>
         </div>
-        <div *ngIf="!loading && bookedEvents.length >= 0" class="cards gap-4">
+
+
+        <!-- <div *ngIf="!loading && bookedEvents.length >= 0" class="cards gap-4">
             <div *ngFor="let event of bookedEvents">
                 <app-card [event]="event" [userEvents]="true"></app-card>
             </div>
+        </div> -->
+
+        <br>
+        <div *ngIf="!loading && bookedEvents.length !== 0">
+            <full-calendar *ngIf="calendarOptions?.plugins" [options]="calendarOptions"></full-calendar>
         </div>
     </section>
+
 
     <app-mobile-navbar></app-mobile-navbar>
 </main>

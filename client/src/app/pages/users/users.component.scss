@@ -2,6 +2,10 @@ main{
     display: flex;
     gap: 1rem;
 
+    table{
+      margin-bottom: 3rem;
+    }
+
     #customers {
         font-family: 'Poppins', sans-serif;
         height: fit-content;
