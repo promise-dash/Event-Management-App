@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Event } from 'src/app/models/Event';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -9,11 +10,10 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class NotificationComponent {
 
-  notifiedEvents: Array<Event> = [];
-  loading = true;
-  constructor(private notifictaionService: NotificationService){
-    this.notifiedEvents = notifictaionService.newEvents;
-    this.loading = false;
-  }
+  notifications: string[] = [];
+  subscription: Subscription;
+
+  constructor(private notificationService: NotificationService) { }
+
 
 }

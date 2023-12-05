@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, FormBuilder } from "@angular/forms";
-import { NotificationService } from 'src/app/services/notification.service';
 import { Event } from 'src/app/models/Event';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 

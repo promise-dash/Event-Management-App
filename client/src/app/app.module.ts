@@ -30,7 +30,8 @@ import { MobileNavbarComponent } from './components/mobile-navbar/mobile-navbar.
 import { StatsComponent } from './pages/stats/stats.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { FullCalendarModule } from '@fullcalendar/angular'; // FullCalendar
-import interactionPlugin from '@fullcalendar/interaction'; // Interaction plugin
+import interactionPlugin from '@fullcalendar/interaction';
+
 
 
 @NgModule({

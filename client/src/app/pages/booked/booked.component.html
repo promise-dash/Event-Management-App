@@ -15,13 +15,6 @@
             <p class="mt-5">You have not booked any event yet</p>
         </div>
 
-
-        <!-- <div *ngIf="!loading && bookedEvents.length >= 0" class="cards gap-4">
-            <div *ngFor="let event of bookedEvents">
-                <app-card [event]="event" [userEvents]="true"></app-card>
-            </div>
-        </div> -->
-
         <br>
         <div *ngIf="!loading && bookedEvents.length !== 0">
             <full-calendar *ngIf="calendarOptions?.plugins" [options]="calendarOptions"></full-calendar>
