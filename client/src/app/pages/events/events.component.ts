@@ -12,6 +12,7 @@ export class EventsComponent implements OnInit {
 
   userEvents: Array<Event> = [];
   loading = true;
+  total = 0;
 
   constructor(private api: ApiService, private activeRoute: ActivatedRoute){
     api.mySubject.subscribe(res=>{
@@ -30,6 +31,10 @@ export class EventsComponent implements OnInit {
     this.api.fetchEventsOfUser(this.activeRoute.snapshot.params['id']).subscribe(res => {
       this.userEvents = res;
       this.loading = false;
+
+      this.total = this.userEvents.reduce((acc, event) => {
+        return acc + event.attendees.length * event.price;
+      }, 0);
     });
   }
 }

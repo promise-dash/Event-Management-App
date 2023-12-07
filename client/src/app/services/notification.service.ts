@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 export class NotificationService {
 
-  apiKey = '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';
+  apiKey = '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';
 
   constructor(){
     console.log("notification service");

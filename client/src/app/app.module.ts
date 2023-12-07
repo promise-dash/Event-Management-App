@@ -69,7 +69,6 @@ import interactionPlugin from '@fullcalendar/interaction';
     FormsModule,
     FullCalendarModule,
     CanvasJSAngularChartsModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]

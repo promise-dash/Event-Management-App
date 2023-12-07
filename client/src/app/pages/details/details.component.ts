@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FeedbackComponent } from 'src/app/components/feedback/feedback.component';
@@ -6,6 +6,8 @@ import { Event } from 'src/app/models/Event';
 import { User } from 'src/app/models/User';
 import { ApiService } from 'src/app/services/api.service';
 import { NotificationService } from 'src/app/services/notification.service';
+import { DomSanitizer } from '@angular/platform-browser';
+// import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
 
 declare let Razorpay: any;
 
@@ -16,12 +18,16 @@ declare let Razorpay: any;
 })
 export class DetailsComponent implements OnInit {
 
+  @ViewChild('mapframe') mapframe: ElementRef;
+
   event: Event;
   user: User;
   loading = true;
   currentDate: Date = new Date();
 
-  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private notificationService: NotificationService) { }
+  myApiKey="AIzaSyBn7BVjWnfIFzkrvqKrzIk0mQvsr3HDHCo";
+
+  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router, private dialog: MatDialog, private notificationService: NotificationService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.user = this.api.user;
@@ -30,6 +36,12 @@ export class DetailsComponent implements OnInit {
 
     this.fetchEventDetails();
   }
+
+  getMapUrl(location: string) {
+    // const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${this.myApiKey}&q=${encodeURIComponent(location)}`;
+    // return this.sanitizer.bypassSecurityTrustResourceUrl(mapUrl);
+  }
+
 
   isEventExpired(): boolean {
     const eventDate = Date.parse(this.event.dateOfEvent);

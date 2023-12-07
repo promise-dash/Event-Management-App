@@ -6,6 +6,34 @@ main{
 section{
     width: 60vw;
     padding: 0px 30px;
+    position: relative;
+
+    .fixed{
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 60vw;
+        margin: auto;
+        height: fit-content;
+        padding-top: 30px;
+        padding-top: 30px;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        z-index: 2;
+        box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+        font-size: larger;
+        font-weight: bold;
+        border-radius: 10px;
+    
+        span{
+            color: var(--primary-yellow);
+        }
+    }
+    
 }
 
 h4{
@@ -49,7 +77,6 @@ h4{
     display: flex;
     flex-direction: column;
 }
-
 
 
 @media (max-width: 600px) {

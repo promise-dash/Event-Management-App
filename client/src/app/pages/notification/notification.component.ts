@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Event } from 'src/app/models/Event';
-import { NotificationService } from 'src/app/services/notification.service';
+import { SignalrService } from 'src/app/services/signalr.service';
 
 @Component({
   selector: 'app-notification',
@@ -10,10 +10,19 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class NotificationComponent {
 
-  notifications: string[] = [];
-  subscription: Subscription;
-
-  constructor(private notificationService: NotificationService) { }
-
+  user: string;
+  message: string;
+  messages: any[] = [];
+  
+  constructor(private signalRService: SignalrService) {
+    this.signalRService.receiveMessage().subscribe(data => {
+      this.messages.push(data);
+    });
+  }
+  
+  sendMessage(): void {
+    this.signalRService.sendMessage(this.user, this.message);
+    this.message = '';
+  }
 
 }

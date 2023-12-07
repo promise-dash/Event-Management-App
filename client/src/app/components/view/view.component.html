@@ -1,7 +1,12 @@
 <main>
   <h4>Attendees</h4>
   <br>
-  <table class="table">
+
+  <div *ngIf="loading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <table class="table" *ngIf="!loading">
     <thead>
       <tr>
         <th scope="col">Sno</th>
@@ -19,4 +24,9 @@
       </tr>
     </tbody>
   </table>
+  <br>
+  <div class="earnings" *ngIf="!loading">
+    <p>Sales</p>
+    <span>₹{{earnings}}</span>
+  </div>
 </main>

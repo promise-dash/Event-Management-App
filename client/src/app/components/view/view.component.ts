@@ -15,15 +15,25 @@ export class ViewComponent implements OnInit {
     
   event: Event;
   attendees: Array<User> = [];
+  earnings = 0;
+  loading = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private api: ApiService) {}
 
   ngOnInit(): void {
+    this.loading = true;
+  
     this.api.fetchEventById(this.data.eventId).subscribe(res => {
-      res.attendees.map((userId: string) => {
-        this.api.fetchUserById(userId).subscribe(res => {
-          this.attendees.push(res);
-        });
+      this.event = res;
+  
+      const attendeePromises = res.attendees.map((userId: string) => {
+        return this.api.fetchUserById(userId).toPromise();
+      });
+  
+      Promise.all(attendeePromises).then((attendees: Array<any>) => {
+        this.attendees = attendees;
+        this.loading = false;
+        this.earnings = this.event.price * this.attendees.length;
       });
     });
   }

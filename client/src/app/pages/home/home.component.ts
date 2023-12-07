@@ -57,21 +57,24 @@ export class HomeComponent implements OnInit {
 
     this.searchForm.valueChanges.subscribe(value => {
       this.filteredEvents = this.events.filter((event: Event) =>
-        event.eventName.toLowerCase().includes(value.searchTerm.toLowerCase())
+        Object.values(event).some(val =>
+          typeof val === 'string' && val.toLowerCase().includes(value.searchTerm.toLowerCase())
+        )
       );
     });
   }
 
   filterEvents() {
+    const locationFilterLC = this.locationFilter.toLowerCase();
+  
     this.filteredEvents = this.events.filter(event => {
-      if (this.locationFilter !== 'All' && event.location !== this.locationFilter) {
+      if (locationFilterLC !== 'all' && !event.location.toLowerCase().includes(locationFilterLC)) {
         return false;
       }
-
+  
       if (this.categoryFilter !== 'all' && event.category !== this.categoryFilter) {
         return false;
       }
-
       return true;
     });
   }
