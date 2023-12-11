@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Observable, Subject, map,of } from "rxjs";
+import {Observable, Subject, map,of, tap } from "rxjs";
 import { User } from '../models/User';
 import { Event } from '../models/Event';
 import { Feedback } from '../models/Feedback';
@@ -10,14 +10,18 @@ import { Feedback } from '../models/Feedback';
 })
 export class ApiService {
 
+  
   user: User;
   isUserLoggedIn = false;
-
+  
   mySubject = new Subject<boolean>;
-
+  
   userBaseUrl = "http://localhost:5263/api/Users";
   eventBaseUrl = "http://localhost:5263/api/Events";
   cloudinaryUrl = "https://api.cloudinary.com/v1_1/${cloudName}/upload";
+  
+  eventsSubject = new Subject<Event[]>();
+  latestEvent: Event;
 
 
   constructor(private http: HttpClient) {
@@ -59,29 +63,16 @@ export class ApiService {
 
 
   //Event endpoints
-  private cachedEvents: Array<any> = [];
-  private cachedFlag = false;
 
-  fetchEvents():Observable<Event[]> {
-    return this.http.get<Event[]>(`${this.eventBaseUrl}`);
-    // if(this.cachedFlag){
-    //   console.log("Api not fetched");
-
-    //   return of(this.cachedEvents);
-    // }
-    // else{
-    //   console.log("Api fetched");
-
-
-    //   this.cachedFlag=true;
-
-    //   return this.http.get<Event[]>(`${this.eventBaseUrl}`).pipe(
-    //     map((data:Event[])=>{
-    //       this.cachedEvents=data;
-    //       return data;
-    //     })
-    //   );
-    // }
+  fetchEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.eventBaseUrl}`).pipe(
+      tap(events => {
+        if (events.length > 0 && this.latestEvent && events[0].id !== this.latestEvent.id) {
+          this.eventsSubject.next([events[0]]);
+        }
+        this.latestEvent = events[0];
+      })
+    );
   }
 
   fetchEventById(id: string):Observable<Event>{

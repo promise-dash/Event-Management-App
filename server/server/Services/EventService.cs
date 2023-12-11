@@ -24,7 +24,8 @@ namespace server.Services
 
         public List<Event> Get()
         {
-            return _events.Find(e => true).ToList();
+            var sortedEvents = _events.Find(e => true).SortByDescending(e => e.DateOfEvent);
+            return sortedEvents.ToList();
         }
 
         public Event GetById(string id)

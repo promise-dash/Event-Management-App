@@ -38,8 +38,8 @@ export class DetailsComponent implements OnInit {
   }
 
   getMapUrl(location: string) {
-    // const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${this.myApiKey}&q=${encodeURIComponent(location)}`;
-    // return this.sanitizer.bypassSecurityTrustResourceUrl(mapUrl);
+    const mapUrl = `https://www.google.com/maps/embed/v1/place?key=${this.myApiKey}&q=${encodeURIComponent(location)}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(mapUrl);
   }
 
 

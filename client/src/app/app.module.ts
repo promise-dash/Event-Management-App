@@ -31,6 +31,7 @@ import { StatsComponent } from './pages/stats/stats.component';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { FullCalendarModule } from '@fullcalendar/angular'; // FullCalendar
 import interactionPlugin from '@fullcalendar/interaction';
+import { VirtualComponent } from './pages/virtual/virtual.component';
 
 
 
@@ -55,6 +56,7 @@ import interactionPlugin from '@fullcalendar/interaction';
     NotificationComponent,
     MobileNavbarComponent,
     StatsComponent,
+    VirtualComponent,
     
   ],
   imports: [

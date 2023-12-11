@@ -52,7 +52,7 @@ export class StatsComponent implements AfterViewInit {
 
         this.chartOptions = {
           title:{
-            text: "Total Impressions by Platforms"
+            text: "Total Impressions by Events"
           },
           animationEnabled: true,
           axisY: {

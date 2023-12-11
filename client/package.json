@@ -46,6 +46,7 @@
     "firebase": "^10.7.0",
     "font-awesome": "^4.7.0",
     "ng2-charts": "^5.0.3",
+    "ng2-sharebuttons": "^2.1.2",
     "nodemailer": "^6.9.7",
     "pusher-js": "^8.3.0",
     "razorpay": "^2.9.2",
